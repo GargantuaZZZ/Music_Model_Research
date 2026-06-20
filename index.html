@@ -93,6 +93,60 @@
         <div id="routeList" class="route-list"></div>
       </section>
 
+      <section class="section-shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Research Plan</p>
+            <h2>4 周调研执行计划</h2>
+          </div>
+          <p>把 111 篇论文拆成扫读、泛读、精读和深挖四个层级，保证覆盖面和重点方向同时成立。</p>
+        </div>
+        <div id="planSummary" class="plan-summary"></div>
+        <div id="readingLadder" class="ladder-grid"></div>
+      </section>
+
+      <section class="section-shell split plan-split">
+        <div>
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Quotas</p>
+              <h2>各主题阅读配额</h2>
+            </div>
+          </div>
+          <div id="quotaTable" class="quota-table"></div>
+        </div>
+        <div>
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Timeline</p>
+              <h2>五阶段路线</h2>
+            </div>
+          </div>
+          <div id="phaseTimeline" class="phase-timeline"></div>
+        </div>
+      </section>
+
+      <section class="section-shell split plan-split">
+        <div>
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Understanding</p>
+              <h2>需要建立的领域认知</h2>
+            </div>
+          </div>
+          <div id="understandingGoals" class="check-list"></div>
+        </div>
+        <div>
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Deliverables</p>
+              <h2>交付物与质量线</h2>
+            </div>
+          </div>
+          <div id="deliverableList" class="check-list"></div>
+        </div>
+      </section>
+
       <section class="section-shell explorer">
         <div class="section-heading">
           <div>
@@ -107,12 +161,17 @@
             <select id="categoryFilter"></select>
           </label>
           <label>
+            <span>阅读等级</span>
+            <select id="levelFilter"></select>
+          </label>
+          <label>
             <span>搜索</span>
             <input id="searchInput" type="search" placeholder="标题、摘要、作者、关键词">
           </label>
           <label>
             <span>排序</span>
             <select id="sortMode">
+              <option value="priority">按阅读优先级</option>
               <option value="category">按主题</option>
               <option value="session">按 Session</option>
               <option value="confidence">按分类置信度</option>

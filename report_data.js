@@ -860,6 +860,155 @@ const REPORT_DATA = {
       "text": "我会优先关注“可解释的音乐理解 + 可控编辑”：它连接信号理解、分离和生成，也最容易形成可演示的网站或工具。"
     }
   ],
+  "researchPlan": {
+    "summary": [
+      "采用三级阅读：标题摘要扫读 111 篇，泛读 60-70 篇，精读 24-30 篇，深挖/复现 6-8 篇。",
+      "目标是建立 MIR 领域认知地图：任务谱系、数据模态、模型范式、评测方式、产业落点和未来机会。",
+      "默认周期为 4 周；如果要写综述或做复现实验，可扩展到 6 周。"
+    ],
+    "readingLevels": {
+      "deep_dive": {
+        "name": "深挖/复现",
+        "short": "深挖",
+        "rank": 3
+      },
+      "close_read": {
+        "name": "精读",
+        "short": "精读",
+        "rank": 2
+      },
+      "broad_read": {
+        "name": "泛读",
+        "short": "泛读",
+        "rank": 1
+      },
+      "scan": {
+        "name": "标题摘要扫读",
+        "short": "扫读",
+        "rank": 0
+      }
+    },
+    "levelCounts": {
+      "broad_read": 34,
+      "deep_dive": 8,
+      "scan": 47,
+      "close_read": 22
+    },
+    "quotaByCategory": {
+      "understanding": {
+        "category": "理解 / 识别",
+        "deep": 2,
+        "close": 7,
+        "broad": 14,
+        "scan": 27,
+        "total": 50
+      },
+      "separation": {
+        "category": "分离 / 分轨",
+        "deep": 2,
+        "close": 2,
+        "broad": 1,
+        "scan": 0,
+        "total": 5
+      },
+      "generation": {
+        "category": "生成 / 编辑",
+        "deep": 2,
+        "close": 4,
+        "broad": 4,
+        "scan": 4,
+        "total": 14
+      },
+      "datasets_eval": {
+        "category": "数据 / 评测",
+        "deep": 1,
+        "close": 3,
+        "broad": 6,
+        "scan": 5,
+        "total": 15
+      },
+      "human_culture": {
+        "category": "人文 / 应用",
+        "deep": 0,
+        "close": 1,
+        "broad": 2,
+        "scan": 0,
+        "total": 3
+      },
+      "methods": {
+        "category": "方法 / 表征",
+        "deep": 1,
+        "close": 5,
+        "broad": 7,
+        "scan": 11,
+        "total": 24
+      }
+    },
+    "phases": [
+      {
+        "name": "第 1 阶段：领域地图",
+        "duration": "2-3 天",
+        "goal": "扫读全部标题、摘要、关键词，建立六类 taxonomy。"
+      },
+      {
+        "name": "第 2 阶段：泛读",
+        "duration": "7-10 天",
+        "goal": "泛读 60-70 篇，记录任务、输入输出、数据、模型、指标、结论和局限。"
+      },
+      {
+        "name": "第 3 阶段：精读",
+        "duration": "10-14 天",
+        "goal": "精读 24-30 篇，每篇写 1 页笔记，重点核对实验设计与 baseline。"
+      },
+      {
+        "name": "第 4 阶段：深挖/复现",
+        "duration": "7-10 天",
+        "goal": "选择 6-8 篇做代码、数据、实验级深挖，优先看生成编辑、分离、foundation model 和评测协议。"
+      },
+      {
+        "name": "第 5 阶段：综合输出",
+        "duration": "2-3 天",
+        "goal": "形成趋势报告、论文矩阵、方向建议和可做 demo 列表。"
+      }
+    ],
+    "understandingGoals": [
+      "区分 MIR 的三层问题：音乐信号层、音乐结构/语义层、音乐创作与交互层。",
+      "判断哪些任务已经成熟，哪些任务仍卡在数据、评测或产品定义上。",
+      "识别一篇论文到底贡献任务、数据、模型、评测、工具，还是音乐学/用户洞察。",
+      "理解大模型适合做表征、检索、标注辅助、生成控制和交互，但不能替代音乐结构、音频质量和评测协议。",
+      "最终能回答：大家在做什么，哪些方向正在汇合，我们值得切入哪里。"
+    ],
+    "deliverables": [
+      "论文阅读矩阵：111 篇条目，包含分类、阅读等级、任务、模态、模型、数据/指标和备注。",
+      "精读笔记集：24-30 篇，每篇 500-1000 字。",
+      "趋势报告：5-7 个趋势，每个趋势至少 3 篇证据论文。",
+      "方向建议：推荐 3 个可继续做的方向，如可解释音乐理解、可控音乐编辑、分离与生成式混音、MIR 评测工具。"
+    ],
+    "qualityChecks": [
+      "每个趋势结论至少对应 3 篇论文证据。",
+      "每个精读结论必须回到 PDF 的实验、图表或指标。",
+      "LLM 只用于初筛、归纳、对比和生成问题清单；引用、实验结果、数据规模必须人工核对。",
+      "报告需让不了解 MIR 的读者 20 分钟内理解领域结构，让研究者 5 分钟内看到潜在切入点。"
+    ],
+    "directions": [
+      {
+        "title": "可解释音乐理解",
+        "text": "连接转录、结构、和声、表演分析和弱监督训练，适合做可视化诊断工具。"
+      },
+      {
+        "title": "可控音乐编辑",
+        "text": "聚焦 instruction editing、text-to-music、codec/diffusion 与客观评测，最接近可演示产品。"
+      },
+      {
+        "title": "分离与生成式混音",
+        "text": "把 source separation、spatial audio、用户引导分离和生成式编辑合在一起，适合做创作工作流。"
+      },
+      {
+        "title": "MIR 评测工具",
+        "text": "围绕数据去重、benchmark、主观/客观指标一致性，建立比单模型更稳定的研究资产。"
+      }
+    ]
+  },
   "papers": [
     {
       "id": "4",
@@ -900,7 +1049,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 14.2
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "规则/统计/传统方法",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "7",
@@ -949,7 +1105,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 21.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 23,
+      "readingLevel": "deep_dive",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "复现/开放资源",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "10",
@@ -993,7 +1156,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 9.799999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "规则/统计/传统方法",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "14",
@@ -1041,7 +1211,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 6.999999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "broad_read",
+      "task": "生成/编辑",
+      "modality": "多模态",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "25",
@@ -1087,7 +1264,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "26",
@@ -1132,7 +1316,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "deep_dive",
+      "task": "结构/分段",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "32",
@@ -1174,7 +1365,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 22,
+      "readingLevel": "deep_dive",
+      "task": "结构/分段",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "33",
@@ -1222,7 +1420,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 2.0999999999999996
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "close_read",
+      "task": "检索/推荐",
+      "modality": "用户/行为",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "38",
@@ -1271,7 +1476,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "结构/分段",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "46",
@@ -1314,7 +1526,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "规则/统计/传统方法",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "47",
@@ -1358,7 +1577,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 14.2
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "broad_read",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "48",
@@ -1400,7 +1626,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 10.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "close_read",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "50",
@@ -1439,7 +1672,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 15,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "待从正文确认",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "53",
@@ -1480,7 +1720,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "close_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "59",
@@ -1530,7 +1777,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 11.399999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "close_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "64",
@@ -1577,7 +1831,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "66",
@@ -1621,7 +1882,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 5.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "67",
@@ -1663,7 +1931,14 @@ const REPORT_DATA = {
         "human_culture": 2.8,
         "methods": 2.0999999999999996
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "70",
@@ -1712,7 +1987,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 2.0999999999999996
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "74",
@@ -1756,7 +2038,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 8.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "75",
@@ -1794,7 +2083,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 12,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "用户/行为",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "77",
@@ -1841,7 +2137,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "评测/数据",
+      "modality": "待从正文确认",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "79",
@@ -1879,7 +2182,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "87",
@@ -1928,7 +2238,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "88",
@@ -1975,7 +2292,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "close_read",
+      "task": "结构/分段",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "89",
@@ -2021,7 +2345,14 @@ const REPORT_DATA = {
         "human_culture": 0.7,
         "methods": 5.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "92",
@@ -2067,7 +2398,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 0.7
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "OMR/乐谱理解",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "101",
@@ -2108,7 +2446,14 @@ const REPORT_DATA = {
         "human_culture": 6.5,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "LLM/语言条件",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "103",
@@ -2151,7 +2496,14 @@ const REPORT_DATA = {
         "human_culture": 4.8999999999999995,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 14,
+      "readingLevel": "close_read",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "105",
@@ -2197,7 +2549,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "111",
@@ -2242,7 +2601,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 20.400000000000002
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "112",
@@ -2288,7 +2654,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 15,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "113",
@@ -2338,7 +2711,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "符号/乐谱",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "116",
@@ -2382,7 +2762,14 @@ const REPORT_DATA = {
         "human_culture": 4.8999999999999995,
         "methods": 5.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "scan",
+      "task": "OMR/乐谱理解",
+      "modality": "符号/乐谱",
+      "modelFamily": "规则/统计/传统方法",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "122",
@@ -2424,7 +2811,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 4.8999999999999995
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "用户/行为",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "125",
@@ -2468,7 +2862,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 14,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "127",
@@ -2517,7 +2918,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "128",
@@ -2563,7 +2971,14 @@ const REPORT_DATA = {
         "human_culture": 10.5,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 13,
+      "readingLevel": "broad_read",
+      "task": "检索/推荐",
+      "modality": "多模态",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "129",
@@ -2604,7 +3019,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 11.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "130",
@@ -2650,7 +3072,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "133",
@@ -2693,7 +3122,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 7.2
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "LLM/语言条件",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "135",
@@ -2733,7 +3169,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 6.999999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 11,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "137",
@@ -2769,7 +3212,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 2.8
       },
-      "confidence": 0.77
+      "confidence": 0.77,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "评测/数据",
+      "modality": "多模态",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "数据集/标注质量",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "138",
@@ -2814,7 +3264,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "140",
@@ -2856,7 +3313,14 @@ const REPORT_DATA = {
         "human_culture": 2.8,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 15,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "规则/统计/传统方法",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "141",
@@ -2899,7 +3363,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 2.8
       },
-      "confidence": 0.87
+      "confidence": 0.87,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "147",
@@ -2937,7 +3408,14 @@ const REPORT_DATA = {
         "human_culture": 4.4,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "close_read",
+      "task": "分离/分轨",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "148",
@@ -2980,7 +3458,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 5.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 13,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "150",
@@ -3026,7 +3511,14 @@ const REPORT_DATA = {
         "human_culture": 0.7,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "broad_read",
+      "task": "生成/编辑",
+      "modality": "符号/乐谱",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "159",
@@ -3071,7 +3563,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "结构/分段",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "163",
@@ -3113,7 +3612,14 @@ const REPORT_DATA = {
         "human_culture": 2.8,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "数据集/标注质量",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "167",
@@ -3151,7 +3657,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 14,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "待从正文确认",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "177",
@@ -3196,7 +3709,14 @@ const REPORT_DATA = {
         "human_culture": 5.1000000000000005,
         "methods": 7.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 14,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "186",
@@ -3243,7 +3763,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 15.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "188",
@@ -3291,7 +3818,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 5.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "broad_read",
+      "task": "检索/推荐",
+      "modality": "符号/乐谱",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "191",
@@ -3331,7 +3865,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 8.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "close_read",
+      "task": "分离/分轨",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "数据集/标注质量",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "199",
@@ -3376,7 +3917,14 @@ const REPORT_DATA = {
         "human_culture": 3.0,
         "methods": 7.8999999999999995
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "broad_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "208",
@@ -3424,7 +3972,14 @@ const REPORT_DATA = {
         "human_culture": 5.8,
         "methods": 7.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 25,
+      "readingLevel": "deep_dive",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "LLM/语言条件",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "210",
@@ -3467,7 +4022,14 @@ const REPORT_DATA = {
         "human_culture": 5.8,
         "methods": 15.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "close_read",
+      "task": "评测/数据",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "211",
@@ -3512,7 +4074,14 @@ const REPORT_DATA = {
         "human_culture": 5.1000000000000005,
         "methods": 14.399999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "用户/行为",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "212",
@@ -3552,7 +4121,14 @@ const REPORT_DATA = {
         "human_culture": 2.8,
         "methods": 4.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "broad_read",
+      "task": "结构/分段",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "数据集/标注质量",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "213",
@@ -3597,7 +4173,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 10.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "broad_read",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "216",
@@ -3637,7 +4220,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 26.199999999999996
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 14,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "符号/乐谱",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "219",
@@ -3680,7 +4270,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "复现/开放资源",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "220",
@@ -3724,7 +4321,14 @@ const REPORT_DATA = {
         "human_culture": 5.8,
         "methods": 6.299999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "用户/行为",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "221",
@@ -3769,7 +4373,14 @@ const REPORT_DATA = {
         "human_culture": 2.8,
         "methods": 3.4999999999999996
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "broad_read",
+      "task": "分离/分轨",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "227",
@@ -3812,7 +4423,14 @@ const REPORT_DATA = {
         "human_culture": 0.7,
         "methods": 6.999999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "close_read",
+      "task": "转录/标注",
+      "modality": "符号/乐谱",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "数据集/标注质量",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "229",
@@ -3857,7 +4475,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 22,
+      "readingLevel": "close_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "233",
@@ -3899,7 +4524,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "Transformer/序列模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "238",
@@ -3943,7 +4575,14 @@ const REPORT_DATA = {
         "human_culture": 4.199999999999999,
         "methods": 8.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "close_read",
+      "task": "检索/推荐",
+      "modality": "用户/行为",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "244",
@@ -3984,7 +4623,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 13.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "复现/开放资源",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "245",
@@ -4034,7 +4680,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "246",
@@ -4078,7 +4731,14 @@ const REPORT_DATA = {
         "human_culture": 4.199999999999999,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "close_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "247",
@@ -4121,7 +4781,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 13.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "broad_read",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "复现/开放资源",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "248",
@@ -4162,7 +4829,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "close_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "256",
@@ -4205,7 +4879,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 6.999999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 13,
+      "readingLevel": "scan",
+      "task": "综合 MIR 任务",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "259",
@@ -4251,7 +4932,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 11.399999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "261",
@@ -4293,7 +4981,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 15.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "用户/行为",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "数据集/标注质量",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "264",
@@ -4333,7 +5028,14 @@ const REPORT_DATA = {
         "human_culture": 0.7,
         "methods": 4.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 14,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "待从正文确认",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "266",
@@ -4379,7 +5081,14 @@ const REPORT_DATA = {
         "human_culture": 0.7,
         "methods": 8.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "268",
@@ -4422,7 +5131,14 @@ const REPORT_DATA = {
         "human_culture": 0.7,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "Transformer/序列模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "269",
@@ -4463,7 +5179,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "274",
@@ -4508,7 +5231,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 5.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 21,
+      "readingLevel": "deep_dive",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "278",
@@ -4553,7 +5283,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 22,
+      "readingLevel": "close_read",
+      "task": "生成/编辑",
+      "modality": "符号/乐谱",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "数据集/标注质量",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "280",
@@ -4600,7 +5337,14 @@ const REPORT_DATA = {
         "human_culture": 2.8,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "close_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "281",
@@ -4647,7 +5391,14 @@ const REPORT_DATA = {
         "human_culture": 0.7,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "scan",
+      "task": "生成/编辑",
+      "modality": "符号/乐谱",
+      "modelFamily": "Transformer/序列模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "283",
@@ -4690,7 +5441,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 9.099999999999998
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "评测/数据",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "284",
@@ -4732,7 +5490,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 14,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "用户/行为",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "286",
@@ -4783,7 +5548,14 @@ const REPORT_DATA = {
         "human_culture": 12.299999999999999,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 24,
+      "readingLevel": "deep_dive",
+      "task": "转录/标注",
+      "modality": "多模态",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "293",
@@ -4828,7 +5600,14 @@ const REPORT_DATA = {
         "human_culture": 2.0999999999999996,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "结构/分段",
+      "modality": "用户/行为",
+      "modelFamily": "Transformer/序列模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "298",
@@ -4868,7 +5647,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 10.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 14,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "数据集/标注质量",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "300",
@@ -4913,7 +5699,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 4.8999999999999995
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "deep_dive",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "308",
@@ -4955,7 +5748,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 0.7
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 23,
+      "readingLevel": "deep_dive",
+      "task": "评测/数据",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "312",
@@ -5001,7 +5801,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 17.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "314",
@@ -5047,7 +5854,14 @@ const REPORT_DATA = {
         "human_culture": 4.4,
         "methods": 7.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "close_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "316",
@@ -5098,7 +5912,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "生成/编辑",
+      "modality": "音频",
+      "modelFamily": "LLM/语言条件",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "321",
@@ -5148,7 +5969,14 @@ const REPORT_DATA = {
         "human_culture": 3.5,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "scan",
+      "task": "生成/编辑",
+      "modality": "符号/乐谱",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "339",
@@ -5186,7 +6014,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 15,
+      "readingLevel": "scan",
+      "task": "转录/标注",
+      "modality": "待从正文确认",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "360",
@@ -5226,7 +6061,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 2.8
       },
-      "confidence": 0.88
+      "confidence": 0.88,
+      "priorityScore": 13,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "379",
@@ -5266,7 +6108,14 @@ const REPORT_DATA = {
         "human_culture": 2.8,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "broad_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "380",
@@ -5308,7 +6157,14 @@ const REPORT_DATA = {
         "human_culture": 3.5,
         "methods": 5.6
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 16,
+      "readingLevel": "scan",
+      "task": "综合 MIR 任务",
+      "modality": "符号/乐谱",
+      "modelFamily": "规则/统计/传统方法",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "381",
@@ -5376,7 +6232,14 @@ const REPORT_DATA = {
         "human_culture": 4.199999999999999,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "close_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "382",
@@ -5417,7 +6280,14 @@ const REPORT_DATA = {
         "human_culture": 4.199999999999999,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "close_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "383",
@@ -5462,7 +6332,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 17,
+      "readingLevel": "broad_read",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "384",
@@ -5503,7 +6380,14 @@ const REPORT_DATA = {
         "human_culture": 1.4,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 12,
+      "readingLevel": "scan",
+      "task": "综合 MIR 任务",
+      "modality": "音频",
+      "modelFamily": "LLM/语言条件",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "385",
@@ -5549,7 +6433,14 @@ const REPORT_DATA = {
         "human_culture": 4.199999999999999,
         "methods": 4.199999999999999
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 18,
+      "readingLevel": "scan",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "386",
@@ -5596,7 +6487,14 @@ const REPORT_DATA = {
         "human_culture": 7.8999999999999995,
         "methods": 1.4
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "close_read",
+      "task": "转录/标注",
+      "modality": "音频",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "391",
@@ -5633,7 +6531,14 @@ const REPORT_DATA = {
         "human_culture": 10.9,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 10,
+      "readingLevel": "broad_read",
+      "task": "综合 MIR 任务",
+      "modality": "用户/行为",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "用户研究/感知评价",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "410",
@@ -5674,7 +6579,14 @@ const REPORT_DATA = {
         "human_culture": 4.8999999999999995,
         "methods": 2.8
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 20,
+      "readingLevel": "close_read",
+      "task": "检索/推荐",
+      "modality": "音频",
+      "modelFamily": "基础模型/预训练",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "424",
@@ -5717,7 +6629,14 @@ const REPORT_DATA = {
         "human_culture": 5.8,
         "methods": 0.0
       },
-      "confidence": 0.95
+      "confidence": 0.95,
+      "priorityScore": 19,
+      "readingLevel": "close_read",
+      "task": "检索/推荐",
+      "modality": "符号/乐谱",
+      "modelFamily": "扩散/生成模型",
+      "evaluationFocus": "指标/benchmark 对比",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     },
     {
       "id": "425",
@@ -5767,7 +6686,14 @@ const REPORT_DATA = {
         "human_culture": 0.0,
         "methods": 0.0
       },
-      "confidence": 0.91
+      "confidence": 0.91,
+      "priorityScore": 6,
+      "readingLevel": "scan",
+      "task": "综合 MIR 任务",
+      "modality": "待从正文确认",
+      "modelFamily": "待从正文确认",
+      "evaluationFocus": "待从正文确认",
+      "matrixNote": "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
     }
   ]
 };

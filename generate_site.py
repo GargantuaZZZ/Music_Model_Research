@@ -115,6 +115,65 @@ STOPWORDS = {
     "and", "the", "of", "in", "to", "on", "a", "an", "is", "are", "by",
 }
 
+READING_LEVELS = {
+    "deep_dive": {"name": "深挖/复现", "short": "深挖", "rank": 3},
+    "close_read": {"name": "精读", "short": "精读", "rank": 2},
+    "broad_read": {"name": "泛读", "short": "泛读", "rank": 1},
+    "scan": {"name": "标题摘要扫读", "short": "扫读", "rank": 0},
+}
+
+READING_TARGETS = {
+    "deep_dive": {
+        "understanding": 2,
+        "methods": 1,
+        "generation": 2,
+        "datasets_eval": 1,
+        "separation": 2,
+        "human_culture": 0,
+    },
+    "close_read": {
+        "understanding": 7,
+        "methods": 5,
+        "generation": 4,
+        "datasets_eval": 3,
+        "separation": 2,
+        "human_culture": 1,
+    },
+    "broad_read": {
+        "understanding": 14,
+        "methods": 7,
+        "generation": 4,
+        "datasets_eval": 6,
+        "separation": 1,
+        "human_culture": 5,
+    },
+}
+
+MODALITY_RULES = [
+    ("audio", "音频", ["audio", "recording", "sound", "waveform", "spectrogram", "vocal", "singing", "source", "binaural"]),
+    ("symbolic", "符号/乐谱", ["symbolic", "midi", "score", "musicxml", "tablature", "chord", "harmony", "omr", "sheet"]),
+    ("multimodal", "多模态", ["multimodal", "video", "image", "lyrics", "text", "album cover", "vision"]),
+    ("user", "用户/行为", ["user", "listener", "playlist", "recommendation", "learning", "diary", "cross-cultural"]),
+]
+
+MODEL_RULES = [
+    ("foundation", "基础模型/预训练", ["foundation", "pretrained", "pre-trained", "self-supervised", "contrastive", "embedding"]),
+    ("llm", "LLM/语言条件", ["llm", "large language model", "language model", "prompt", "instruction", "natural language"]),
+    ("diffusion", "扩散/生成模型", ["diffusion", "flow matching", "controlnet", "generative"]),
+    ("transformer", "Transformer/序列模型", ["transformer", "bert", "attention"]),
+    ("classical", "规则/统计/传统方法", ["dynamic time warping", "shortest path", "histogram", "rule", "statistical"]),
+]
+
+TASK_RULES = [
+    ("transcription", "转录/标注", ["transcription", "annotation", "notes", "pitch", "tablature"]),
+    ("segmentation", "结构/分段", ["segmentation", "structure", "form"]),
+    ("retrieval", "检索/推荐", ["retrieval", "recommendation", "fingerprinting", "playlist"]),
+    ("generation", "生成/编辑", ["generation", "editing", "synthesis", "composition", "text-to-music"]),
+    ("separation", "分离/分轨", ["separation", "demixing", "source separation", "stem"]),
+    ("omr", "OMR/乐谱理解", ["omr", "optical music", "sheet music", "score"]),
+    ("evaluation", "评测/数据", ["evaluation", "dataset", "benchmark", "metric", "corpus"]),
+]
+
 
 def normalize(text):
     return re.sub(r"\s+", " ", (text or "")).strip()
@@ -157,6 +216,123 @@ def classify(paper):
 
 def words(text):
     return re.findall(r"[a-z][a-z0-9-]{2,}", text.lower())
+
+
+def first_match(text, rules, fallback):
+    text = text.lower()
+    for _, label, keywords in rules:
+        if score_text(text, keywords):
+            return label
+    return fallback
+
+
+def infer_matrix_fields(paper):
+    blob = " ".join([paper["title"], paper["abstract"], " ".join(paper["keywords"])])
+    task = first_match(blob, TASK_RULES, "综合 MIR 任务")
+    modality = first_match(blob, MODALITY_RULES, "待从正文确认")
+    model_family = first_match(blob, MODEL_RULES, "待从正文确认")
+    eval_focus = first_match(blob, [
+        ("metric", "指标/benchmark 对比", ["metric", "benchmark", "evaluation", "score", "accuracy", "f-measure", "sdr"]),
+        ("dataset", "数据集/标注质量", ["dataset", "corpus", "annotation", "ground truth"]),
+        ("human", "用户研究/感知评价", ["user", "listener", "perceptual", "human", "diary"]),
+        ("repro", "复现/开放资源", ["open source", "reproducibility", "code", "release"]),
+    ], "待从正文确认")
+    notes = "先核对问题定义、数据来源、baseline、指标是否支撑摘要结论。"
+    return {
+        "task": task,
+        "modality": modality,
+        "modelFamily": model_family,
+        "evaluationFocus": eval_focus,
+        "matrixNote": notes,
+    }
+
+
+def priority_score(paper, trend_hits):
+    blob = " ".join([paper["title"], paper["abstract"], " ".join(paper["keywords"])]).lower()
+    score = 0
+    score += 6 if "awards nominee" in blob else 0
+    score += 4 if paper.get("pdf") else 0
+    score += int(paper["confidence"] * 6)
+    score += len(paper["secondary"])
+    score += sum(1 for ids in trend_hits.values() if paper["id"] in ids)
+    score += 3 if score_text(blob, ["foundation", "llm", "diffusion", "source separation", "benchmark", "dataset", "evaluation"]) else 0
+    score += 2 if paper["primary"] in {"generation", "separation", "methods"} else 0
+    return score
+
+
+def assign_reading_levels(papers, trend_hits):
+    for p in papers:
+        p["priorityScore"] = priority_score(p, trend_hits)
+        p["readingLevel"] = "scan"
+    remaining = {p["id"]: p for p in papers}
+
+    for level in ["deep_dive", "close_read", "broad_read"]:
+        for cid, target in READING_TARGETS[level].items():
+            candidates = [p for p in remaining.values() if p["primary"] == cid]
+            candidates.sort(key=lambda p: (-p["priorityScore"], p["title"]))
+            for paper in candidates[:target]:
+                paper["readingLevel"] = level
+                remaining.pop(paper["id"], None)
+
+
+def build_research_plan(papers):
+    level_counts = Counter(p["readingLevel"] for p in papers)
+    category_level_counts = defaultdict(Counter)
+    for p in papers:
+        category_level_counts[p["primary"]][p["readingLevel"]] += 1
+
+    return {
+        "summary": [
+            "采用三级阅读：标题摘要扫读 111 篇，泛读 60-70 篇，精读 24-30 篇，深挖/复现 6-8 篇。",
+            "目标是建立 MIR 领域认知地图：任务谱系、数据模态、模型范式、评测方式、产业落点和未来机会。",
+            "默认周期为 4 周；如果要写综述或做复现实验，可扩展到 6 周。"
+        ],
+        "readingLevels": READING_LEVELS,
+        "levelCounts": dict(level_counts),
+        "quotaByCategory": {
+            cid: {
+                "category": CATEGORY_RULES[[r["id"] for r in CATEGORY_RULES].index(cid)]["short"],
+                "deep": category_level_counts[cid]["deep_dive"],
+                "close": category_level_counts[cid]["close_read"],
+                "broad": category_level_counts[cid]["broad_read"],
+                "scan": category_level_counts[cid]["scan"],
+                "total": sum(category_level_counts[cid].values()),
+            }
+            for cid in [rule["id"] for rule in CATEGORY_RULES]
+        },
+        "phases": [
+            {"name": "第 1 阶段：领域地图", "duration": "2-3 天", "goal": "扫读全部标题、摘要、关键词，建立六类 taxonomy。"},
+            {"name": "第 2 阶段：泛读", "duration": "7-10 天", "goal": "泛读 60-70 篇，记录任务、输入输出、数据、模型、指标、结论和局限。"},
+            {"name": "第 3 阶段：精读", "duration": "10-14 天", "goal": "精读 24-30 篇，每篇写 1 页笔记，重点核对实验设计与 baseline。"},
+            {"name": "第 4 阶段：深挖/复现", "duration": "7-10 天", "goal": "选择 6-8 篇做代码、数据、实验级深挖，优先看生成编辑、分离、foundation model 和评测协议。"},
+            {"name": "第 5 阶段：综合输出", "duration": "2-3 天", "goal": "形成趋势报告、论文矩阵、方向建议和可做 demo 列表。"},
+        ],
+        "understandingGoals": [
+            "区分 MIR 的三层问题：音乐信号层、音乐结构/语义层、音乐创作与交互层。",
+            "判断哪些任务已经成熟，哪些任务仍卡在数据、评测或产品定义上。",
+            "识别一篇论文到底贡献任务、数据、模型、评测、工具，还是音乐学/用户洞察。",
+            "理解大模型适合做表征、检索、标注辅助、生成控制和交互，但不能替代音乐结构、音频质量和评测协议。",
+            "最终能回答：大家在做什么，哪些方向正在汇合，我们值得切入哪里。",
+        ],
+        "deliverables": [
+            "论文阅读矩阵：111 篇条目，包含分类、阅读等级、任务、模态、模型、数据/指标和备注。",
+            "精读笔记集：24-30 篇，每篇 500-1000 字。",
+            "趋势报告：5-7 个趋势，每个趋势至少 3 篇证据论文。",
+            "方向建议：推荐 3 个可继续做的方向，如可解释音乐理解、可控音乐编辑、分离与生成式混音、MIR 评测工具。",
+        ],
+        "qualityChecks": [
+            "每个趋势结论至少对应 3 篇论文证据。",
+            "每个精读结论必须回到 PDF 的实验、图表或指标。",
+            "LLM 只用于初筛、归纳、对比和生成问题清单；引用、实验结果、数据规模必须人工核对。",
+            "报告需让不了解 MIR 的读者 20 分钟内理解领域结构，让研究者 5 分钟内看到潜在切入点。",
+        ],
+        "directions": [
+            {"title": "可解释音乐理解", "text": "连接转录、结构、和声、表演分析和弱监督训练，适合做可视化诊断工具。"},
+            {"title": "可控音乐编辑", "text": "聚焦 instruction editing、text-to-music、codec/diffusion 与客观评测，最接近可演示产品。"},
+            {"title": "分离与生成式混音", "text": "把 source separation、spatial audio、用户引导分离和生成式编辑合在一起，适合做创作工作流。"},
+            {"title": "MIR 评测工具", "text": "围绕数据去重、benchmark、主观/客观指标一致性，建立比单模型更稳定的研究资产。"},
+        ],
+    }
 
 
 def main():
@@ -226,6 +402,10 @@ def main():
             "examples": [{"id": p["id"], "title": p["title"], "primary": p["primary"]} for p in sample],
         })
 
+    assign_reading_levels(papers, trend_hits)
+    for paper in papers:
+        paper.update(infer_matrix_fields(paper))
+
     category_insights = {
         "understanding": "最大板块仍是理解与识别：多音高、和弦、节拍、结构、歌词、OMR、表演分析等传统 MIR 任务继续活跃，但越来越多地引入弱监督、预训练和跨模态表征。",
         "separation": "分离/分轨在 ISMIR 2025 不是数量最大的明面主题，但它与生成式编辑、混音、数据集和评测紧密相连；适合继续追踪 MUSDB、MDX/MVSEP、音频 foundation model 与可控编辑交叉处。",
@@ -271,6 +451,7 @@ def main():
         "trends": trends,
         "categoryInsights": category_insights,
         "routes": routes,
+        "researchPlan": build_research_plan(papers),
         "papers": papers,
     }
     REPORT_PATH.write_text("const REPORT_DATA = " + json.dumps(report, ensure_ascii=False, indent=2) + ";\n")
