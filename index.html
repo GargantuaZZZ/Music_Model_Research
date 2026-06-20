@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ISMIR 2025 音乐信息理解调研地图</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ISMIR 2025 Papers / MIR Research Map</p>
+        <h1>音乐信息理解调研地图</h1>
+        <p class="lead">从 ISMIR 2025 论文标题、摘要和关键词出发，整理音乐信号理解、分离分轨、生成编辑，以及数据评测、人文应用和方法论趋势。</p>
+      </div>
+      <a class="source-link" href="https://ismir2025program.ismir.net/papers.html" target="_blank" rel="noreferrer">查看原始论文集</a>
+    </header>
+
+    <main>
+      <section class="summary-grid" aria-label="数据概览">
+        <div class="metric">
+          <span id="paperCount">0</span>
+          <p>论文条目</p>
+        </div>
+        <div class="metric">
+          <span id="categoryCount">0</span>
+          <p>研究主题</p>
+        </div>
+        <div class="metric">
+          <span id="sessionCount">0</span>
+          <p>会议 Session</p>
+        </div>
+        <div class="metric">
+          <span id="crossCount">0</span>
+          <p>带交叉标签的论文</p>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Field Overview</p>
+            <h2>这个领域大家在做什么</h2>
+          </div>
+          <p>分类是启发式的：以题目、摘要、关键词为证据，适合作为调研导航；真正判断贡献仍需要回到论文。</p>
+        </div>
+        <div class="overview-layout">
+          <div id="categoryChart" class="chart-panel" aria-label="主题分布图"></div>
+          <div id="categoryNarrative" class="narrative-list"></div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Trend Signals</p>
+            <h2>趋势信号</h2>
+          </div>
+          <p>这些不是“最终结论”，而是适合继续精读的一组线索。</p>
+        </div>
+        <div id="trendGrid" class="trend-grid"></div>
+      </section>
+
+      <section class="section-shell split">
+        <div>
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Sessions</p>
+              <h2>Session 主题热力图</h2>
+            </div>
+          </div>
+          <div id="heatmap" class="heatmap"></div>
+        </div>
+        <div>
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Keywords</p>
+              <h2>高频关键词</h2>
+            </div>
+          </div>
+          <div id="keywordCloud" class="keyword-cloud"></div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Research Route</p>
+            <h2>推荐调研路线</h2>
+          </div>
+          <p>把大模型当作归纳和问问题的助手，把论文页面、PDF 和代码当作证据。</p>
+        </div>
+        <div id="routeList" class="route-list"></div>
+      </section>
+
+      <section class="section-shell explorer">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Paper Explorer</p>
+            <h2>论文浏览器</h2>
+          </div>
+          <p>可按研究主题、关键词和自由文本检索。每张卡片都能跳回 ISMIR 页面或 PDF。</p>
+        </div>
+        <div class="controls">
+          <label>
+            <span>主题</span>
+            <select id="categoryFilter"></select>
+          </label>
+          <label>
+            <span>搜索</span>
+            <input id="searchInput" type="search" placeholder="标题、摘要、作者、关键词">
+          </label>
+          <label>
+            <span>排序</span>
+            <select id="sortMode">
+              <option value="category">按主题</option>
+              <option value="session">按 Session</option>
+              <option value="confidence">按分类置信度</option>
+              <option value="title">按标题</option>
+            </select>
+          </label>
+        </div>
+        <div id="resultMeta" class="result-meta"></div>
+        <div id="paperGrid" class="paper-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>数据来源：ISMIR 2025 Papers。分类由本地规则脚本生成，建议作为阅读地图而不是权威标注。</p>
+    </footer>
+
+    <script src="report_data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
