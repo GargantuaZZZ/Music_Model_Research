@@ -216,10 +216,9 @@ function renderPapers() {
         <h3>${escapeHtml(paper.title)}</h3>
         <p>${escapeHtml(paper.authors.slice(0, 4).join(", "))}${paper.authors.length > 4 ? " 等" : ""}</p>
         <div class="paper-meta">
-          <span class="keyword">S${escapeHtml(paper.session)}</span>
-          <span class="keyword">置信度 ${Math.round(paper.confidence * 100)}%</span>
-          <span class="keyword">${escapeHtml(paper.task)}</span>
-          <span class="keyword">${escapeHtml(paper.modality)}</span>
+          <span class="meta-chip">S${escapeHtml(paper.session)}</span>
+          <span class="meta-chip">${escapeHtml(paper.task)}</span>
+          <span class="meta-chip">${escapeHtml(paper.modality)}</span>
           ${secondary}
         </div>
         <p>${escapeHtml(summary.slice(0, 260))}${summary.length > 260 ? "..." : ""}</p>
