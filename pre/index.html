@@ -26,17 +26,11 @@
         </div>
 
         <div class="element-map" aria-label="音乐大模型元素二维分布图">
-          <div class="axis axis-x">
-            <span>离散 / 符号</span>
-            <span>连续 / 信号</span>
-          </div>
-          <div class="axis axis-y">
-            <span>可解释</span>
-            <span>感知表达</span>
-          </div>
-
           <div class="bubble bubble-audio">
             <span>音频</span>
+          </div>
+          <div class="bubble bubble-video">
+            <span>视频</span>
           </div>
           <div class="bubble bubble-midi">
             <span>MIDI</span>
@@ -50,33 +44,356 @@
           <div class="bubble bubble-understanding">
             <span>理解</span>
           </div>
+          <div class="bubble bubble-alignment">
+            <span>对齐</span>
+          </div>
+          <div class="bubble bubble-separation">
+            <span>分离</span>
+          </div>
         </div>
       </section>
 
-      <section class="section-grid" aria-label="汇报结构">
-        <article class="topic-card">
+      <section class="section" aria-labelledby="functions-title">
+        <div class="section-heading">
           <p class="index">02</p>
-          <h2>功能</h2>
-          <div class="empty-state"></div>
-        </article>
+          <div>
+            <p class="eyebrow">Functions</p>
+            <h2 id="functions-title">功能</h2>
+          </div>
+        </div>
+        <div class="feature-card">
+          <h3>MIDI-VALLE</h3>
+          <div class="flow-diagram" aria-label="MIDI 加音频生成音频">
+            <span class="mini-bubble mini-midi">MIDI</span>
+            <span class="operator">+</span>
+            <span class="mini-bubble mini-audio">音频</span>
+            <span class="arrow">→</span>
+            <span class="mini-bubble mini-audio">音频</span>
+          </div>
+          <img src="../resources/MIDI-VALLE1.png" alt="MIDI-VALLE 模型示意图">
+        </div>
+        <div class="feature-card">
+          <h3>BART-fusion</h3>
+          <div class="flow-diagram" aria-label="音频加歌词生成理解">
+            <span class="mini-bubble mini-audio">音频</span>
+            <span class="operator">+</span>
+            <span class="mini-bubble mini-lyrics">歌词</span>
+            <span class="arrow">→</span>
+            <span class="mini-bubble mini-understanding">理解</span>
+          </div>
+          <img src="../resources/BART-fusion1.png" alt="BART-fusion 模型示意图">
+        </div>
+        <div class="feature-card">
+          <h3>MusicGen-fusion</h3>
+          <div class="flow-diagram" aria-label="视频加理解生成音频">
+            <span class="mini-bubble mini-video">视频</span>
+            <span class="operator">+</span>
+            <span class="mini-bubble mini-understanding">理解</span>
+            <span class="arrow">→</span>
+            <span class="mini-bubble mini-audio">音频</span>
+          </div>
+          <img src="../resources/MusicGen-fusion1.png" alt="MusicGen-fusion 模型示意图">
+        </div>
+        <div class="feature-card">
+          <h3>MST-Text/Tags</h3>
+          <div class="flow-diagram" aria-label="理解生成 MIDI">
+            <span class="mini-bubble mini-understanding">理解</span>
+            <span class="arrow">→</span>
+            <span class="mini-bubble mini-midi">MIDI</span>
+          </div>
+          <img src="../resources/MST1.png" alt="MST-Text/Tags 模型示意图">
+        </div>
+        <div class="feature-card">
+          <h3>See2Hear</h3>
+          <div class="flow-diagram" aria-label="音频加参考视频生成分离">
+            <span class="mini-bubble mini-audio">音频</span>
+            <span class="operator">+</span>
+            <span class="mini-bubble mini-video mini-reference">参考视频</span>
+            <span class="arrow">→</span>
+            <span class="mini-bubble mini-separation">分离</span>
+          </div>
+          <img src="../resources/See2Hear1.png" alt="See2Hear 模型示意图">
+        </div>
+        <div class="feature-card">
+          <h3>GuideSep</h3>
+          <div class="flow-diagram" aria-label="音频加参考音频生成分离">
+            <span class="mini-bubble mini-audio">音频</span>
+            <span class="operator">+</span>
+            <span class="mini-bubble mini-audio mini-reference">参考音频</span>
+            <span class="arrow">→</span>
+            <span class="mini-bubble mini-separation">分离</span>
+          </div>
+          <img src="../resources/GuideSep1.png" alt="GuideSep 模型示意图">
+        </div>
+        <div class="feature-card">
+          <h3>AMT-based alignment</h3>
+          <div class="flow-diagram" aria-label="音频加乐谱生成对齐">
+            <span class="mini-bubble mini-audio">音频</span>
+            <span class="operator">+</span>
+            <span class="mini-bubble mini-score">乐谱</span>
+            <span class="arrow">→</span>
+            <span class="mini-bubble mini-alignment">对齐</span>
+          </div>
+          <img src="../resources/AMT1.png" alt="AMT-based alignment 模型示意图">
+        </div>
+      </section>
 
-        <article class="topic-card">
+      <section class="section section-empty" aria-labelledby="datasets-title">
+        <div class="section-heading">
           <p class="index">03</p>
-          <h2>数据集</h2>
-          <div class="empty-state"></div>
+          <div>
+            <p class="eyebrow">Datasets</p>
+            <h2 id="datasets-title">数据集</h2>
+          </div>
+        </div>
+        <article class="dataset-card">
+          <div class="dataset-header">
+            <h3>ATEPP <span>(Automatically Transcribed Expressive Piano Performance)</span></h3>
+            <p>Transcribed MIDI</p>
+          </div>
+          <ul class="dataset-list">
+            <li>11,742 首/轨钢琴演奏</li>
+            <li>约 1007 小时音乐</li>
+            <li>49 位世界知名钢琴家</li>
+            <li>25 位西方古典作曲家</li>
+            <li>1580 个乐章/曲目单位</li>
+            <li>主要覆盖从巴洛克到现代时期的标准古典钢琴独奏曲目</li>
+            <li>约 43% 的轨道配有 MusicXML 乐谱，共 319 个乐章，对应 5124 条演奏</li>
+            <li>强调同一曲目的多演奏版本。1580 个乐章中有 44% 拥有超过 5 个演奏版本，约 12% 拥有超过 15 个版本。使用 MIDI 的 onset、offset、velocity、pitch 等音符级特征，可学习到个人演奏风格信息</li>
+          </ul>
         </article>
+        <article class="dataset-card">
+          <div class="dataset-header">
+            <h3>MAESTRO <span>(MIDI and Audio Edited for Synchronous TRacks and Organization)</span></h3>
+            <p>钢琴音频-Recorded MIDI 对齐</p>
+          </div>
+          <ul class="dataset-list">
+            <li>1184 段钢琴演奏</li>
+            <li>约 430 首/个作品</li>
+            <li>172.3 小时音频</li>
+            <li>约 618 万个音符</li>
+            <li>音频大小约 102.8 GB</li>
+            <li>音频质量为 44.1-48 kHz、16-bit PCM stereo</li>
+            <li>包含真实钢琴音频，对齐 MIDI，力度与踏板等信息</li>
+            <li>包含作曲家、曲名、演奏年份等元数据</li>
+            <li>官方 train/validation/test 划分</li>
+          </ul>
+        </article>
+        <article class="dataset-card">
+          <div class="dataset-header">
+            <h3>OSSL <span>(Open Screen Soundtrack Library)</span></h3>
+            <p>音视频，影视配乐</p>
+          </div>
+          <ul class="dataset-list">
+            <li>来自 299 部公版电影的 736 个电影片段</li>
+            <li>总时长约 36.5 小时，平均片段长度约 178.47 秒</li>
+            <li>电影视频片段</li>
+            <li>对应的 soundtrack</li>
+            <li>电影元数据，如标题、上映时间、类型</li>
+            <li>人工标注的 mood 情绪标签</li>
+          </ul>
+        </article>
+        <article class="dataset-card">
+          <div class="dataset-header">
+            <h3>MUSIC</h3>
+            <p>音频与对应演奏视频</p>
+          </div>
+          <ul class="dataset-list">
+            <li>714 个 YouTube 视频，其中 565 个 solo 视频，149 个 duet 视频</li>
+            <li>平均视频时长约 2 分钟</li>
+            <li>覆盖 11 类乐器</li>
+            <li>随后的 MUSIC-21 扩展了视频数量和乐器种类</li>
+          </ul>
+        </article>
+        <article class="dataset-card">
+          <div class="dataset-header">
+            <h3>GlobalMood</h3>
+            <p>音频，多模态</p>
+          </div>
+          <ul class="dataset-list">
+            <li>1,180 首歌曲，共来自 59 个国家，每个国家采样 20 首歌</li>
+            <li>每首歌使用 15 秒音频片段</li>
+            <li>共 2,519 名参与者，来自 5 个语言/文化地区</li>
+            <li>最终收集 988,925 条情绪/心境评分</li>
+            <li>不预设情绪词表，而是让参与者用自己的母语自由写出音乐传达的情绪/心境词，明显提升非英语语境下的情绪评价效果</li>
+          </ul>
+        </article>
+        <article class="dataset-card">
+          <div class="dataset-header">
+            <h3>Music4All</h3>
+            <p>音频，多模态</p>
+          </div>
+          <ul class="dataset-list">
+            <li>109,269 首歌曲</li>
+            <li>15,602 个匿名用户</li>
+            <li>用户的听歌历史</li>
+            <li>每首歌的 30 秒音频片段</li>
+            <li>歌词，语言信息，标签，风格/流派</li>
+            <li>Spotify 元数据与音频属性</li>
+          </ul>
+        </article>
+      </section>
 
-        <article class="topic-card">
+      <section class="section section-empty" aria-labelledby="metrics-title">
+        <div class="section-heading">
           <p class="index">04</p>
-          <h2>评价指标</h2>
-          <div class="empty-state"></div>
+          <div>
+            <p class="eyebrow">Metrics</p>
+            <h2 id="metrics-title">评价指标</h2>
+          </div>
+        </div>
+        <article class="metric-card">
+          <div class="metric-header">
+            <h3>valence-arousal</h3>
+            <p>重要情绪概念</p>
+          </div>
+          <div class="metric-definition">
+            <p><strong>valence</strong> = 情感效价，表示情绪是偏正面还是负面；</p>
+            <p><strong>arousal</strong> = 唤醒度 / 激活度，表示情绪能量强不强；</p>
+          </div>
+          <div class="quadrant-grid" aria-label="valence-arousal 情绪象限">
+            <div class="quadrant high-valence high-arousal">
+              <span>高 valence + 高 arousal</span>
+              <strong>兴奋、快乐、激动</strong>
+            </div>
+            <div class="quadrant high-valence low-arousal">
+              <span>高 valence + 低 arousal</span>
+              <strong>平静、舒适、放松</strong>
+            </div>
+            <div class="quadrant low-valence high-arousal">
+              <span>低 valence + 高 arousal</span>
+              <strong>愤怒、焦虑、恐惧</strong>
+            </div>
+            <div class="quadrant low-valence low-arousal">
+              <span>低 valence + 低 arousal</span>
+              <strong>悲伤、沮丧、无聊</strong>
+            </div>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-header">
+            <h3>FAD <span>(Fréchet Audio Distance)</span></h3>
+            <p>音频生成质量</p>
+          </div>
+          <div class="metric-block">
+            <h4>流程</h4>
+            <div class="metric-flow">
+              <p>真实音频 → 预训练音频模型 → embedding 分布</p>
+              <p>生成音频 → 同一个预训练音频模型 → embedding 分布</p>
+              <p>比较两个分布的距离</p>
+            </div>
+          </div>
+          <div class="metric-block">
+            <h4>关注内容</h4>
+            <ul class="metric-list">
+              <li>音质是否自然</li>
+              <li>音色是否接近真实数据</li>
+              <li>噪声、失真、伪影是否多</li>
+              <li>整体声学分布是否像真实录音</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="topic-card">
-          <p class="index">05</p>
-          <h2>Baseline</h2>
-          <div class="empty-state"></div>
+        <article class="metric-card">
+          <div class="metric-header">
+            <h3>Spectrogram distance</h3>
+            <p>音频生成质量</p>
+          </div>
+          <div class="metric-block">
+            <h4>流程</h4>
+            <div class="metric-flow">
+              <p>真实音频 → 时频图</p>
+              <p>生成音频 → 时频图</p>
+              <p>比较两个频谱间的距离</p>
+            </div>
+          </div>
+          <div class="metric-block">
+            <h4>关注内容</h4>
+            <ul class="metric-list">
+              <li>每个时间点的频率能量是否相近</li>
+              <li>泛音结构是否相近</li>
+              <li>音符起音/衰减是否相近</li>
+              <li>高频细节是否缺失</li>
+              <li>是否有多余噪声或频带能量</li>
+            </ul>
+          </div>
+          <div class="metric-requirement">
+            <strong>要求</strong>
+            <span>生成音频与真实音频时间对齐</span>
+          </div>
         </article>
+
+        <article class="metric-card">
+          <div class="metric-header">
+            <h3>Chroma distance</h3>
+            <p>音频生成质量</p>
+          </div>
+          <div class="metric-block">
+            <p class="metric-statement">把音高压缩到 12 个 pitch class，比较生成音频和真实音频的 chroma 特征差异</p>
+          </div>
+          <div class="metric-block">
+            <h4>关注内容</h4>
+            <ul class="metric-list">
+              <li>音高类别是否正确</li>
+              <li>和声是否接近</li>
+              <li>和弦结构是否一致</li>
+              <li>是否弹错音或漏掉重要音高</li>
+            </ul>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-header">
+            <h3>MuChoMusic</h3>
+            <p>音乐理解能力</p>
+          </div>
+          <div class="metric-overview">
+            <div class="metric-overview-text">
+              <p class="metric-statement">包含 1,187 道选择题，覆盖 644 段音乐</p>
+              <p class="metric-statement">题目分为 <strong>Knowledge 问题</strong>（考察模型是否能识别音乐里的基本客观属性）和 <strong>Reasoning 问题</strong>（考察模型能否结合多个音乐信息，推断音乐功能场景）</p>
+            </div>
+            <img class="metric-figure" src="../resources/MuChoMusic1.png" alt="MuChoMusic 评价任务示意图">
+          </div>
+          <div class="metric-block">
+            <h4>评价指标</h4>
+            <div class="formula-grid">
+              <div class="formula-card">
+                <h5>1. Accuracy</h5>
+                <div class="formula-equation">
+                  <span class="formula-name">Accuracy</span>
+                  <span>=</span>
+                  <span class="fraction">
+                    <span class="numerator"># correct answers</span>
+                    <span class="denominator"># total questions</span>
+                  </span>
+                  <span>× 100%</span>
+                </div>
+              </div>
+              <div class="formula-card">
+                <h5>2. Instruction Following Rate (IFR)</h5>
+                <div class="formula-equation">
+                  <span class="formula-name">IFR</span>
+                  <span>=</span>
+                  <span class="fraction">
+                    <span class="numerator"># outputs matching one valid option</span>
+                    <span class="denominator"># total outputs</span>
+                  </span>
+                  <span>× 100%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section section-empty" aria-labelledby="baseline-title">
+        <div class="section-heading">
+          <p class="index">05</p>
+          <div>
+            <p class="eyebrow">Baseline</p>
+            <h2 id="baseline-title">Baseline</h2>
+          </div>
+        </div>
+        <div class="empty-state"></div>
       </section>
     </main>
   </body>
