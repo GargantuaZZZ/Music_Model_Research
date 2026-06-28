@@ -16,9 +16,35 @@
         </div>
       </header>
 
-      <section class="section section-elements" aria-labelledby="elements-title">
+      <section class="section section-trends" aria-labelledby="research-trends-title">
         <div class="section-heading">
           <p class="index">01</p>
+          <div>
+            <p class="eyebrow">ISMIR Research Trends</p>
+            <h2 id="research-trends-title">研究趋势</h2>
+          </div>
+        </div>
+
+        <div class="trend-layout">
+          <div class="trend-chart-card">
+            <div class="trend-chart-head">
+              <div>
+                <h3>主要研究方向论文数变化</h3>
+              </div>
+              <span>2021-2025</span>
+            </div>
+            <div id="researchTrendChart" class="trend-line-chart" aria-label="ISMIR 主要研究方向论文数随年份变化折线图"></div>
+          </div>
+
+          <div class="trend-side">
+            <div id="researchTrendLegend" class="trend-legend" aria-label="研究方向图例"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-elements" aria-labelledby="elements-title">
+        <div class="section-heading">
+          <p class="index">02</p>
           <div>
             <p class="eyebrow">Elements</p>
             <h2 id="elements-title">元素</h2>
@@ -55,7 +81,7 @@
 
       <section class="section" aria-labelledby="functions-title">
         <div class="section-heading">
-          <p class="index">02</p>
+          <p class="index">03</p>
           <div>
             <p class="eyebrow">Functions</p>
             <h2 id="functions-title">功能</h2>
@@ -140,7 +166,7 @@
 
       <section class="section section-empty" aria-labelledby="datasets-title">
         <div class="section-heading">
-          <p class="index">03</p>
+          <p class="index">04</p>
           <div>
             <p class="eyebrow">Datasets</p>
             <h2 id="datasets-title">数据集</h2>
@@ -236,165 +262,1158 @@
 
       <section class="section section-empty" aria-labelledby="metrics-title">
         <div class="section-heading">
-          <p class="index">04</p>
+          <p class="index">05</p>
           <div>
             <p class="eyebrow">Metrics</p>
             <h2 id="metrics-title">评价指标</h2>
           </div>
         </div>
-        <article class="metric-card">
-          <div class="metric-header">
-            <h3>valence-arousal</h3>
-            <p>重要情绪概念</p>
-          </div>
-          <div class="metric-definition">
-            <p><strong>valence</strong> = 情感效价，表示情绪是偏正面还是负面；</p>
-            <p><strong>arousal</strong> = 唤醒度 / 激活度，表示情绪能量强不强；</p>
-          </div>
-          <div class="quadrant-grid" aria-label="valence-arousal 情绪象限">
-            <div class="quadrant high-valence high-arousal">
-              <span>高 valence + 高 arousal</span>
-              <strong>兴奋、快乐、激动</strong>
+        <details class="metric-group">
+          <summary class="metric-group-summary">
+            <span class="metric-group-title">音频生成质量</span>
+            <span class="metric-group-count">3 项</span>
+          </summary>
+          <div class="metric-group-content">
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>FAD <span>(Fréchet Audio Distance)</span></h3>
+              <p>音频生成质量</p>
             </div>
-            <div class="quadrant high-valence low-arousal">
-              <span>高 valence + 低 arousal</span>
-              <strong>平静、舒适、放松</strong>
-            </div>
-            <div class="quadrant low-valence high-arousal">
-              <span>低 valence + 高 arousal</span>
-              <strong>愤怒、焦虑、恐惧</strong>
-            </div>
-            <div class="quadrant low-valence low-arousal">
-              <span>低 valence + 低 arousal</span>
-              <strong>悲伤、沮丧、无聊</strong>
-            </div>
-          </div>
-        </article>
-        <article class="metric-card">
-          <div class="metric-header">
-            <h3>FAD <span>(Fréchet Audio Distance)</span></h3>
-            <p>音频生成质量</p>
-          </div>
-          <div class="metric-block">
-            <h4>流程</h4>
-            <div class="metric-flow">
-              <p>真实音频 → 预训练音频模型 → embedding 分布</p>
-              <p>生成音频 → 同一个预训练音频模型 → embedding 分布</p>
-              <p>比较两个分布的距离</p>
-            </div>
-          </div>
-          <div class="metric-block">
-            <h4>关注内容</h4>
-            <ul class="metric-list">
-              <li>音质是否自然</li>
-              <li>音色是否接近真实数据</li>
-              <li>噪声、失真、伪影是否多</li>
-              <li>整体声学分布是否像真实录音</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="metric-card">
-          <div class="metric-header">
-            <h3>Spectrogram distance</h3>
-            <p>音频生成质量</p>
-          </div>
-          <div class="metric-block">
-            <h4>流程</h4>
-            <div class="metric-flow">
-              <p>真实音频 → 时频图</p>
-              <p>生成音频 → 时频图</p>
-              <p>比较两个频谱间的距离</p>
-            </div>
-          </div>
-          <div class="metric-block">
-            <h4>关注内容</h4>
-            <ul class="metric-list">
-              <li>每个时间点的频率能量是否相近</li>
-              <li>泛音结构是否相近</li>
-              <li>音符起音/衰减是否相近</li>
-              <li>高频细节是否缺失</li>
-              <li>是否有多余噪声或频带能量</li>
-            </ul>
-          </div>
-          <div class="metric-requirement">
-            <strong>要求</strong>
-            <span>生成音频与真实音频时间对齐</span>
-          </div>
-        </article>
-
-        <article class="metric-card">
-          <div class="metric-header">
-            <h3>Chroma distance</h3>
-            <p>音频生成质量</p>
-          </div>
-          <div class="metric-block">
-            <p class="metric-statement">把音高压缩到 12 个 pitch class，比较生成音频和真实音频的 chroma 特征差异</p>
-          </div>
-          <div class="metric-block">
-            <h4>关注内容</h4>
-            <ul class="metric-list">
-              <li>音高类别是否正确</li>
-              <li>和声是否接近</li>
-              <li>和弦结构是否一致</li>
-              <li>是否弹错音或漏掉重要音高</li>
-            </ul>
-          </div>
-        </article>
-        <article class="metric-card">
-          <div class="metric-header">
-            <h3>MuChoMusic</h3>
-            <p>音乐理解能力</p>
-          </div>
-          <div class="metric-overview">
-            <div class="metric-overview-text">
-              <p class="metric-statement">包含 1,187 道选择题，覆盖 644 段音乐</p>
-              <p class="metric-statement">题目分为 <strong>Knowledge 问题</strong>（考察模型是否能识别音乐里的基本客观属性）和 <strong>Reasoning 问题</strong>（考察模型能否结合多个音乐信息，推断音乐功能场景）</p>
-            </div>
-            <img class="metric-figure" src="../resources/MuChoMusic1.png" alt="MuChoMusic 评价任务示意图">
-          </div>
-          <div class="metric-block">
-            <h4>评价指标</h4>
-            <div class="formula-grid">
-              <div class="formula-card">
-                <h5>1. Accuracy</h5>
-                <div class="formula-equation">
-                  <span class="formula-name">Accuracy</span>
-                  <span>=</span>
-                  <span class="fraction">
-                    <span class="numerator"># correct answers</span>
-                    <span class="denominator"># total questions</span>
-                  </span>
-                  <span>× 100%</span>
-                </div>
+            <div class="metric-block">
+              <h4>流程</h4>
+              <div class="metric-flow">
+                <p>真实音频 → 预训练音频模型 → embedding 分布</p>
+                <p>生成音频 → 同一个预训练音频模型 → embedding 分布</p>
+                <p>比较两个分布的距离</p>
               </div>
-              <div class="formula-card">
-                <h5>2. Instruction Following Rate (IFR)</h5>
-                <div class="formula-equation">
-                  <span class="formula-name">IFR</span>
-                  <span>=</span>
-                  <span class="fraction">
-                    <span class="numerator"># outputs matching one valid option</span>
-                    <span class="denominator"># total outputs</span>
-                  </span>
-                  <span>× 100%</span>
+            </div>
+            <div class="metric-block">
+              <h4>关注内容</h4>
+              <ul class="metric-list">
+                <li>音质是否自然</li>
+                <li>音色是否接近真实数据</li>
+                <li>噪声、失真、伪影是否多</li>
+                <li>整体声学分布是否像真实录音</li>
+              </ul>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Spectrogram distance</h3>
+              <p>音频生成质量</p>
+            </div>
+            <div class="metric-block">
+              <h4>流程</h4>
+              <div class="metric-flow">
+                <p>真实音频 → 时频图</p>
+                <p>生成音频 → 时频图</p>
+                <p>比较两个频谱间的距离</p>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>关注内容</h4>
+              <ul class="metric-list">
+                <li>每个时间点的频率能量是否相近</li>
+                <li>泛音结构是否相近</li>
+                <li>音符起音/衰减是否相近</li>
+                <li>高频细节是否缺失</li>
+                <li>是否有多余噪声或频带能量</li>
+              </ul>
+            </div>
+            <div class="metric-requirement">
+              <strong>要求</strong>
+              <span>生成音频与真实音频时间对齐</span>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Chroma distance</h3>
+              <p>音频生成质量</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">把音高压缩到 12 个 pitch class，比较生成音频和真实音频的 chroma 特征差异</p>
+            </div>
+            <div class="metric-block">
+              <h4>关注内容</h4>
+              <ul class="metric-list">
+                <li>音高类别是否正确</li>
+                <li>和声是否接近</li>
+                <li>和弦结构是否一致</li>
+                <li>是否弹错音或漏掉重要音高</li>
+              </ul>
+            </div>
+          </article>
+          </div>
+        </details>
+        <details class="metric-group">
+          <summary class="metric-group-summary">
+            <span class="metric-group-title">MIDI生成质量</span>
+            <span class="metric-group-count">3 项</span>
+          </summary>
+          <div class="metric-group-content">
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Pitch Class Entropy</h3>
+              <p>MIDI生成质量</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">目标：衡量音高类别分布的丰富度。</p>
+            </div>
+            <div class="metric-block">
+              <h4>Pitch class 映射</h4>
+              <p class="metric-statement">先把所有非鼓音符映射到 12 个 pitch class： pc = pitch mod 12</p>
+            </div>
+            <div class="metric-block">
+              <h4>概率与熵</h4>
+              <div class="formula-grid">
+                <div class="formula-card">
+                  <div class="formula-equation">
+                    <span class="formula-name">p<sub>i</sub></span>
+                    <span>=</span>
+                    <span class="fraction">
+                      <span class="numerator">n<sub>i</sub></span>
+                      <span class="denominator">Σ<sub>j=1</sub><sup>12</sup> n<sub>j</sub></span>
+                    </span>
+                  </div>
+                </div>
+                <div class="formula-card">
+                  <div class="formula-equation">
+                    <span class="formula-name">H</span>
+                    <span>=</span>
+                    <span>−Σ<sub>i=1</sub><sup>12</sup> p<sub>i</sub> log p<sub>i</sub></span>
+                  </div>
                 </div>
               </div>
             </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Scale Consistency</h3>
+              <p>MIDI生成质量</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">目标：衡量生成音乐是否符合某个音阶/调式。</p>
+              <p class="metric-statement">对每首 MIDI，遍历可能的调/音阶，比如 12 个 major + 12 个 minor，找一个最能解释这首曲子的 scale。</p>
+            </div>
+            <div class="metric-block">
+              <h4>候选 scale 评分</h4>
+              <p class="metric-statement">对于某个候选 scale <strong>S</strong>，计算有多少音符的 pitch class 落在这个 scale 内：</p>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">SC(S)</span>
+                  <span>=</span>
+                  <span class="fraction">
+                    <span class="numerator">#{notes: pc(note) ∈ S}</span>
+                    <span class="denominator">#{notes}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>取最大值</h4>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">SC</span>
+                  <span>=</span>
+                  <span>max<sub>S</sub>&nbsp;SC(S)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Groove Consistency</h3>
+              <p>MIDI生成质量</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">目标：衡量节奏律动是否稳定。</p>
+              <p class="metric-statement">常见实现是把每个小节切成固定网格，比如 16 个 step，并对每个小节构造一个 onset pattern。</p>
+            </div>
+            <div class="metric-block">
+              <h4>Onset pattern 示例</h4>
+              <div class="rouge-example">
+                <div>
+                  <span>bar 1</span>
+                  <p>[1,0,0,1, 0,0,1,0, ...]</p>
+                </div>
+                <div>
+                  <span>bar 2</span>
+                  <p>[1,0,0,1, 0,0,1,0, ...]</p>
+                </div>
+                <div>
+                  <span>meaning</span>
+                  <p>1 表示该位置有 onset，0 表示没有</p>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">然后比较不同小节之间节奏 pattern 的相似度。常见可以用 Hamming similarity / cosine similarity / pairwise distance。</p>
+              <p class="metric-statement">距离越小，consistency 越高。</p>
+            </div>
+          </article>
           </div>
-        </article>
+        </details>
+        <details class="metric-group">
+          <summary class="metric-group-summary">
+            <span class="metric-group-title">音乐理解能力</span>
+            <span class="metric-group-count">7 项</span>
+          </summary>
+          <div class="metric-group-content">
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>ROUGE</h3>
+              <p>音乐理解能力</p>
+            </div>
+            <div class="metric-block">
+              <h4>ROUGE-1</h4>
+              <p class="metric-statement">看单个词的重叠。</p>
+              <div class="rouge-example">
+                <div>
+                  <span>reference</span>
+                  <p>the song is about lost love</p>
+                </div>
+                <div>
+                  <span>candidate</span>
+                  <p>this song describes love and loss</p>
+                </div>
+                <div>
+                  <span>重叠词</span>
+                  <p>song, love</p>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>ROUGE-2</h4>
+              <p class="metric-statement">看连续两个词的重叠。</p>
+            </div>
+            <div class="metric-block">
+              <h4>ROUGE-L</h4>
+              <p class="metric-statement">看最长公共子序列。它不要求词必须连续，但要求顺序一致。</p>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>METEOR</h3>
+              <p>音乐理解能力</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">METEOR 不只看完全相同的词，还会考虑词形变化、词干、同义词、词序惩罚。</p>
+            </div>
+            <div class="metric-block">
+              <h4>公式</h4>
+              <div class="formula-grid">
+                <div class="formula-card">
+                  <div class="formula-equation">
+                    <span class="formula-name">Precision</span>
+                    <span>=</span>
+                    <span class="fraction">
+                      <span class="numerator">matched candidate words</span>
+                      <span class="denominator">candidate words</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="formula-card">
+                  <div class="formula-equation">
+                    <span class="formula-name">Recall</span>
+                    <span>=</span>
+                    <span class="fraction">
+                      <span class="numerator">matched reference words</span>
+                      <span class="denominator">reference words</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="formula-card formula-wide">
+                  <div class="formula-equation">
+                    <span class="formula-name">METEOR</span>
+                    <span>=</span>
+                    <span>F<sub>mean</sub></span>
+                    <span>×</span>
+                    <span>(1 − penalty)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">其中 penalty 为惩罚项，用于惩罚词序太乱、匹配不连续的情况。</p>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>BERT-Score</h3>
+              <p>音乐理解能力</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">BERT-Score 不直接比较词面是否相同，而是用 BERT 这类预训练语言模型把每个 token 表示成上下文向量，然后比较向量相似度。</p>
+            </div>
+            <div class="metric-block">
+              <h4>流程</h4>
+              <div class="metric-flow">
+                <p>reference → BERT → token embeddings</p>
+                <p>candidate → BERT → token embeddings</p>
+                <p>计算 candidate token 和 reference token 的余弦相似度</p>
+                <p>对于 candidate 中每个 token，找 reference 中最相似的 token；反过来也做一次。</p>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>得到</h4>
+              <div class="formula-grid">
+                <div class="formula-card">
+                  <div class="formula-equation">
+                    <span class="formula-name">P<sub>BERT</sub></span>
+                  </div>
+                  <p class="formula-note">表示 candidate 中的词有多少能在 reference 中找到语义相近的对应。</p>
+                </div>
+                <div class="formula-card">
+                  <div class="formula-equation">
+                    <span class="formula-name">R<sub>BERT</sub></span>
+                  </div>
+                  <p class="formula-note">表示 reference 中的词有多少被 candidate 覆盖。</p>
+                </div>
+                <div class="formula-card formula-wide">
+                  <div class="formula-equation">
+                    <span class="formula-name">F<sub>BERT</sub></span>
+                    <span>=</span>
+                    <span>2 ·</span>
+                    <span class="fraction">
+                      <span class="numerator">P<sub>BERT</sub> R<sub>BERT</sub></span>
+                      <span class="denominator">P<sub>BERT</sub> + R<sub>BERT</sub></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>MRR <span>(Mean Reciprocal Rank)</span></h3>
+              <p>音乐理解能力</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">用生成的 interpretation 帮助检索歌曲。</p>
+            </div>
+            <div class="metric-block">
+              <h4>公式</h4>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">MRR</span>
+                  <span>=</span>
+                  <span class="fraction fraction-compact">
+                    <span class="numerator">1</span>
+                    <span class="denominator">m</span>
+                  </span>
+                  <span>Σ<sub>i=1</sub><sup>m</sup></span>
+                  <span class="fraction fraction-compact">
+                    <span class="numerator">1</span>
+                    <span class="denominator">k<sub>i</sub></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">其中 <strong>k<sub>i</sub></strong> 是第 <strong>i</strong> 个 query 的正确歌曲在检索结果里的排名。</p>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>MuChoMusic</h3>
+              <p>音乐理解能力</p>
+            </div>
+            <div class="metric-overview">
+              <div class="metric-overview-text">
+                <p class="metric-statement">包含 1,187 道选择题，覆盖 644 段音乐</p>
+                <p class="metric-statement">题目分为 <strong>Knowledge 问题</strong>（考察模型是否能识别音乐里的基本客观属性）和 <strong>Reasoning 问题</strong>（考察模型能否结合多个音乐信息，推断音乐功能场景）</p>
+              </div>
+              <img class="metric-figure" src="../resources/MuChoMusic1.png" alt="MuChoMusic 评价任务示意图">
+            </div>
+            <div class="metric-block">
+              <h4>评价指标</h4>
+              <div class="formula-grid">
+                <div class="formula-card">
+                  <h5>1. Accuracy</h5>
+                  <div class="formula-equation">
+                    <span class="formula-name">Accuracy</span>
+                    <span>=</span>
+                    <span class="fraction">
+                      <span class="numerator"># correct answers</span>
+                      <span class="denominator"># total questions</span>
+                    </span>
+                    <span>× 100%</span>
+                  </div>
+                </div>
+                <div class="formula-card">
+                  <h5>2. Instruction Following Rate (IFR)</h5>
+                  <div class="formula-equation">
+                    <span class="formula-name">IFR</span>
+                    <span>=</span>
+                    <span class="fraction">
+                      <span class="numerator"># outputs matching one valid option</span>
+                      <span class="denominator"># total outputs</span>
+                    </span>
+                    <span>× 100%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>PI <span>(Perceptual Index)</span></h3>
+              <p>音乐理解能力</p>
+            </div>
+            <div class="metric-block">
+              <h4>公式</h4>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">PI(q,Y,D)</span>
+                  <span>=</span>
+                  <span class="fraction">
+                    <span class="numerator">p<sub>text</sub>(D|q)</span>
+                    <span class="denominator">p<sub>text</sub>(Y|q)</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>其中</h4>
+              <ul class="metric-list">
+                <li><strong>q</strong>：问题文本</li>
+                <li><strong>Y</strong>：所有候选答案</li>
+                <li><strong>D</strong>：错误干扰项集合</li>
+                <li><strong>p<sub>text</sub></strong>：text-only LLM 在只看文本时给出的概率</li>
+              </ul>
+            </div>
+            <div class="metric-block">
+              <h4>解释</h4>
+              <div class="metric-flow">
+                <p><strong>PI 越高</strong>：text-only 模型越容易选错，说明这道题越需要音频感知。</p>
+                <p><strong>PI 越低</strong>：text-only 模型越容易靠文本猜对，说明这道题不太能检验音频理解。</p>
+              </div>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>valence-arousal</h3>
+              <p>音乐理解能力</p>
+            </div>
+            <div class="metric-definition">
+              <p><strong>valence</strong> = 情感效价，表示情绪是偏正面还是负面；</p>
+              <p><strong>arousal</strong> = 唤醒度 / 激活度，表示情绪能量强不强；</p>
+            </div>
+            <div class="quadrant-grid" aria-label="valence-arousal 情绪象限">
+              <div class="quadrant high-valence high-arousal">
+                <span>高 valence + 高 arousal</span>
+                <strong>兴奋、快乐、激动</strong>
+              </div>
+              <div class="quadrant high-valence low-arousal">
+                <span>高 valence + 低 arousal</span>
+                <strong>平静、舒适、放松</strong>
+              </div>
+              <div class="quadrant low-valence high-arousal">
+                <span>低 valence + 高 arousal</span>
+                <strong>愤怒、焦虑、恐惧</strong>
+              </div>
+              <div class="quadrant low-valence low-arousal">
+                <span>低 valence + 低 arousal</span>
+                <strong>悲伤、沮丧、无聊</strong>
+              </div>
+            </div>
+          </article>
+          </div>
+        </details>
+        <details class="metric-group">
+          <summary class="metric-group-summary">
+            <span class="metric-group-title">音源分离效果</span>
+            <span class="metric-group-count">3 项</span>
+          </summary>
+          <div class="metric-group-content">
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>SDR <span>(Signal-to-Distortion Ratio)</span></h3>
+              <p>音源分离效果</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">SDR 衡量的是：分离/生成出来的音频和真实目标音频相比，失真有多小。</p>
+            </div>
+            <div class="metric-block">
+              <h4>公式</h4>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">SDR</span>
+                  <span>=</span>
+                  <span>10&nbsp;log<sub>10</sub></span>
+                  <span class="fraction">
+                    <span class="numerator">||s<sub>target</sub>||<sup>2</sup></span>
+                    <span class="denominator">||s<sub>target</sub> − ŝ||<sup>2</sup></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>其中</h4>
+              <ul class="metric-list">
+                <li><strong>s<sub>target</sub></strong>：真实目标声源，比如真实人声、真实钢琴</li>
+                <li><strong>ŝ</strong>：模型估计/分离出来的声源</li>
+                <li><strong>s<sub>target</sub> − ŝ</strong>：误差或失真</li>
+                <li>单位通常是 dB</li>
+              </ul>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>SIR <span>(Signal-to-Interference Ratio)</span></h3>
+              <p>音源分离效果</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">SIR 衡量的是：目标声源里混进了多少其他声源。</p>
+            </div>
+            <div class="metric-block">
+              <h4>公式</h4>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">SIR</span>
+                  <span>=</span>
+                  <span>10&nbsp;log<sub>10</sub></span>
+                  <span class="fraction">
+                    <span class="numerator">||s<sub>target</sub>||<sup>2</sup></span>
+                    <span class="denominator">||e<sub>interf</sub>||<sup>2</sup></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>其中</h4>
+              <ul class="metric-list">
+                <li><strong>s<sub>target</sub></strong>：目标源成分</li>
+                <li><strong>e<sub>interf</sub></strong>：其他源泄漏进来的干扰</li>
+              </ul>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>SAR <span>(Signal-to-Artifacts Ratio)</span></h3>
+              <p>音源分离效果</p>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">SAR 衡量的是：分离结果里有多少算法产生的伪影。</p>
+              <p class="metric-statement">伪影 (artifacts) 指的是原本音频里没有、由模型处理造成的奇怪声音。</p>
+            </div>
+            <div class="metric-block">
+              <h4>公式</h4>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">SAR</span>
+                  <span>=</span>
+                  <span>10&nbsp;log<sub>10</sub></span>
+                  <span class="fraction">
+                    <span class="numerator">||s<sub>target</sub> + e<sub>interf</sub>||<sup>2</sup></span>
+                    <span class="denominator">||e<sub>artif</sub>||<sup>2</sup></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>其中</h4>
+              <ul class="metric-list">
+                <li><strong>e<sub>artif</sub></strong>：算法产生的伪影误差</li>
+              </ul>
+            </div>
+          </article>
+          </div>
+        </details>
+        <details class="metric-group">
+          <summary class="metric-group-summary">
+            <span class="metric-group-title">音频对齐误差</span>
+            <span class="metric-group-count">2 项</span>
+          </summary>
+          <div class="metric-group-content">
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Measure Transfer</h3>
+              <p>音频对齐误差</p>
+            </div>
+            <div class="metric-overview">
+              <div class="metric-overview-text">
+                <p class="metric-statement">场景：只有一个版本的音频有人工小节标注</p>
+                <p class="metric-statement"><strong>S</strong> = score / 乐谱</p>
+                <p class="metric-statement"><strong>A1</strong> = 要评估的某个音频版本</p>
+                <p class="metric-statement"><strong>A2</strong> = WK64 音频版本，有人工小节标注</p>
+              </div>
+              <img class="metric-figure" src="../resources/AMT2.png" alt="Measure Transfer 对齐误差示意图">
+            </div>
+            <div class="metric-block">
+              <h4>两条路径</h4>
+              <p class="metric-statement">把同一个小节位置用两条路径转到 A1 的时间轴上：</p>
+              <div class="formula-grid">
+                <div class="formula-card">
+                  <h5>路径 1：从 score 转到 A1</h5>
+                  <div class="formula-equation">
+                    <span class="formula-name">𝓜<sup>S→A1</sup>(t<sub>S</sub>)</span>
+                  </div>
+                </div>
+                <div class="formula-card">
+                  <h5>路径 2：从 WK64 音频转到 A1</h5>
+                  <div class="formula-equation">
+                    <span class="formula-name">𝓜<sup>A2→A1</sup>(t<sub>A2</sub>)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>绝对时间误差</h4>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">ε</span>
+                  <span>=</span>
+                  <span>|𝓜<sup>S→A1</sup>(t<sub>S</sub>) − 𝓜<sup>A2→A1</sup>(t<sub>A2</sub>)|</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Note Onset Transfer</h3>
+              <p>音频对齐误差</p>
+            </div>
+            <div class="metric-overview">
+              <div class="metric-overview-text">
+                <p class="metric-statement">场景：有音频对应的详细 MIDI 信息</p>
+                <p class="metric-statement"><strong>S</strong> = score</p>
+                <p class="metric-statement"><strong>A1</strong> = 一个音频版本</p>
+                <p class="metric-statement"><strong>A2</strong> = 另一个音频版本</p>
+              </div>
+              <img class="metric-figure" src="../resources/AMT3.png" alt="Note Onset Transfer 对齐误差示意图">
+            </div>
+            <div class="metric-block">
+              <h4>score-audio alignment</h4>
+              <p class="metric-statement">先分别做 score-audio alignment：</p>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">𝓜<sup>S→A1</sup>,&nbsp;&nbsp;𝓜<sup>S→A2</sup></span>
+                </div>
+              </div>
+              <p class="metric-statement">把 score 里的 note onset <strong>t<sub>S</sub></strong> 映射到两个音频时间轴上。</p>
+            </div>
+            <div class="metric-block">
+              <h4>audio-audio alignment</h4>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">𝓜<sup>A1→A2</sup></span>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>路径误差</h4>
+              <p class="metric-statement">比较两条路径到达 A2 后的位置差：</p>
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span class="formula-name">ε</span>
+                  <span>=</span>
+                  <span>|𝓜<sup>S→A2</sup>(t<sub>S</sub>) − 𝓜<sup>A1→A2</sup>(𝓜<sup>S→A1</sup>(t<sub>S</sub>))|</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          </div>
+        </details>
       </section>
 
-      <section class="section section-empty" aria-labelledby="baseline-title">
+      <section class="section section-challenges" aria-labelledby="challenges-title">
         <div class="section-heading">
-          <p class="index">05</p>
+          <p class="index">06</p>
           <div>
-            <p class="eyebrow">Baseline</p>
-            <h2 id="baseline-title">Baseline</h2>
+            <p class="eyebrow">Challenges</p>
+            <h2 id="challenges-title">难点与挑战</h2>
           </div>
         </div>
-        <div class="empty-state"></div>
+
+        <article class="challenge-card">
+          <div class="challenge-title">
+            <h3>数据集</h3>
+          </div>
+          <div class="challenge-list">
+            <div class="challenge-item">
+              <span>1</span>
+              <div>
+                <h4>缺少某种类型的数据集</h4>
+                <p>比如特定流派的音乐，可分离各音源的音乐，高质量、对齐的 MIDI 等。</p>
+              </div>
+            </div>
+            <div class="challenge-item">
+              <span>2</span>
+              <div>
+                <h4>数据集质量不高，缺少标注</h4>
+                <p>很多数据集的音频质量不高或有背景音；数据集没有或缺少流派、情绪、说明等标注。</p>
+              </div>
+            </div>
+            <div class="challenge-item">
+              <span>3</span>
+              <div>
+                <h4>数据集缺乏统一标准</h4>
+                <p>不同论文常常使用不同训练集和测试集，有些还用专有数据集，导致很难判断真正的 SOTA。</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="challenge-card">
+          <div class="challenge-title">
+            <h3>模型</h3>
+          </div>
+          <div class="challenge-list">
+            <div class="challenge-item">
+              <span>1</span>
+              <div>
+                <h4>依赖预训练模型性能</h4>
+                <p>许多使用的预训练模型通常不是专门为音乐或其细分领域训练的，可能需要再训练。</p>
+              </div>
+            </div>
+            <div class="challenge-item">
+              <span>2</span>
+              <div>
+                <h4>可控性和定制化不足</h4>
+                <p>大多数现有模型像黑箱，用户很难精确控制乐器、节奏、情绪曲线、音乐结构、和声等，严重限制了实际应用。</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="challenge-card">
+          <div class="challenge-title">
+            <h3>评价指标</h3>
+          </div>
+          <div class="challenge-list">
+            <div class="challenge-item">
+              <span>1</span>
+              <div>
+                <h4>评价指标不统一</h4>
+                <p>不同论文的指标难以横向比较，难以判断真正的 SOTA。</p>
+              </div>
+            </div>
+            <div class="challenge-item">
+              <span>2</span>
+              <div>
+                <h4>评价指标不可靠</h4>
+                <p>FAD、FD、KL 等多基于通用音频特征，不一定适合音乐质量评价。MIDI 统计指标只能看局部统计，和人类偏好相关性低。很多指标不能很好衡量叙事、情绪、结构、审美。</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="challenge-card">
+          <div class="challenge-title">
+            <h3>音频 or MIDI</h3>
+          </div>
+          <div class="challenge-compare">
+            <div class="challenge-compare-card">
+              <h4>MIDI</h4>
+              <div>
+                <h5>优点</h5>
+                <ul>
+                  <li>可控性强</li>
+                  <li>可编辑</li>
+                  <li>容易加入和弦、旋律、节奏、乐器等控制</li>
+                  <li>可以生成较长结构</li>
+                </ul>
+              </div>
+              <div>
+                <h5>缺点</h5>
+                <ul>
+                  <li>数据规模小</li>
+                  <li>多样性有限</li>
+                  <li>表现力依赖 soundfont 或后续渲染</li>
+                  <li>音色和真实演奏质感弱</li>
+                </ul>
+              </div>
+            </div>
+            <div class="challenge-compare-card">
+              <h4>音频</h4>
+              <div>
+                <h5>优点</h5>
+                <ul>
+                  <li>声音表现力强</li>
+                  <li>可直接生成真实音频</li>
+                  <li>可利用大规模音频数据</li>
+                </ul>
+              </div>
+              <div>
+                <h5>缺点</h5>
+                <ul>
+                  <li>可控性弱</li>
+                  <li>计算成本高</li>
+                  <li>生成时长通常较短</li>
+                  <li>很难精细编辑</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="challenge-card">
+          <div class="challenge-title">
+            <h3>多模态（视频）</h3>
+          </div>
+          <div class="challenge-list">
+            <div class="challenge-item">
+              <span>1</span>
+              <div>
+                <h4>领域还处在早期阶段</h4>
+                <p>该领域还没有形成成熟的工业应用和统一研究范式。模型不仅要生成好听的音乐，还要让音乐和视觉内容在语义、情绪、节奏、时间结构上匹配。</p>
+              </div>
+            </div>
+            <div class="challenge-item">
+              <span>2</span>
+              <div>
+                <h4>视觉与音乐之间的对应关系很难建模</h4>
+                <p>视觉和音乐不是天然一一对应的，模型很难判断“唯一正确”的音乐是什么。</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section section-paper-search" aria-labelledby="paper-search-title">
+        <div class="section-heading">
+          <p class="index">07</p>
+          <div>
+            <p class="eyebrow">Paper Search</p>
+            <h2 id="paper-search-title">论文检索</h2>
+          </div>
+        </div>
+
+        <div class="paper-search-panel">
+          <div class="paper-search-controls">
+            <label class="paper-search-field">
+              <span>关键词</span>
+              <input id="paperSearchInput" type="search" placeholder="搜索标题、作者、关键词、摘要">
+            </label>
+            <label class="paper-search-field">
+              <span>年份</span>
+              <select id="paperYearFilter">
+                <option value="all">全部年份</option>
+              </select>
+            </label>
+            <label class="paper-search-field">
+              <span>方向</span>
+              <select id="paperCategoryFilter">
+                <option value="all">全部方向</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="paper-search-meta">
+            <strong id="paperSearchCount">0</strong>
+            <span>篇论文</span>
+          </div>
+
+          <div id="paperSearchResults" class="paper-results" aria-live="polite"></div>
+        </div>
       </section>
     </main>
+    <script src="ismir_papers.js"></script>
+    <script>
+      (() => {
+        const trendYears = [2021, 2022, 2023, 2024, 2025];
+        const trendSeries = [
+          {
+            name: "理解 / 识别",
+            fullName: "音乐信号理解与识别",
+            color: "#2563eb",
+            values: [50, 54, 48, 69, 50]
+          },
+          {
+            name: "方法 / 表征",
+            fullName: "方法论、表示学习与模型分析",
+            color: "#0891b2",
+            values: [23, 25, 22, 17, 24]
+          },
+          {
+            name: "数据 / 评测",
+            fullName: "数据集、评测与可复现性",
+            color: "#9333ea",
+            values: [7, 12, 12, 14, 15]
+          },
+          {
+            name: "生成 / 编辑",
+            fullName: "音乐生成、编辑与创作工具",
+            color: "#16a34a",
+            values: [11, 12, 8, 25, 14]
+          },
+          {
+            name: "分离 / 分轨",
+            fullName: "音乐分离、分轨与源建模",
+            color: "#dc2626",
+            values: [3, 6, 4, 5, 5]
+          },
+          {
+            name: "人文 / 应用",
+            fullName: "人、文化、产业与音乐学",
+            color: "#ea580c",
+            values: [10, 4, 9, 3, 3]
+          }
+        ];
+
+        const renderResearchTrends = () => {
+          const chart = document.getElementById("researchTrendChart");
+          const legend = document.getElementById("researchTrendLegend");
+
+          if (!chart || !legend) {
+            return;
+          }
+
+          const width = 860;
+          const height = 430;
+          const padding = { top: 28, right: 96, bottom: 54, left: 54 };
+          const plotWidth = width - padding.left - padding.right;
+          const plotHeight = height - padding.top - padding.bottom;
+          const maxValue = 75;
+          const yTicks = [0, 15, 30, 45, 60, 75];
+          const x = (index) => padding.left + (plotWidth / (trendYears.length - 1)) * index;
+          const y = (value) => padding.top + plotHeight - (value / maxValue) * plotHeight;
+          const pathFor = (values) => values.map((value, index) => `${index === 0 ? "M" : "L"} ${x(index).toFixed(1)} ${y(value).toFixed(1)}`).join(" ");
+
+          chart.innerHTML = `
+            <svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="trendChartTitle trendChartDesc">
+              <title id="trendChartTitle">ISMIR 主要研究方向论文数随年份变化</title>
+              <desc id="trendChartDesc">六个研究方向从 2021 到 2025 的论文数量折线图。</desc>
+              ${yTicks.map((tick) => `
+                <line class="trend-grid-line" x1="${padding.left}" y1="${y(tick).toFixed(1)}" x2="${width - padding.right}" y2="${y(tick).toFixed(1)}"></line>
+                <text class="trend-axis-label" x="${padding.left - 12}" y="${y(tick).toFixed(1)}" text-anchor="end" dominant-baseline="middle">${tick}</text>
+              `).join("")}
+              <line class="trend-axis" x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${height - padding.bottom}"></line>
+              <line class="trend-axis" x1="${padding.left}" y1="${height - padding.bottom}" x2="${width - padding.right}" y2="${height - padding.bottom}"></line>
+              ${trendYears.map((year, index) => `
+                <text class="trend-year-label" x="${x(index).toFixed(1)}" y="${height - 22}" text-anchor="middle">${year}</text>
+              `).join("")}
+              ${trendSeries.map((series) => `
+                <path class="trend-series" d="${pathFor(series.values)}" stroke="${series.color}"></path>
+                ${series.values.map((value, index) => `
+                  <circle class="trend-dot" cx="${x(index).toFixed(1)}" cy="${y(value).toFixed(1)}" r="5" fill="${series.color}"></circle>
+                `).join("")}
+                <text class="trend-value-label" x="${(width - padding.right + 14).toFixed(1)}" y="${y(series.values.at(-1)).toFixed(1)}" dominant-baseline="middle" fill="${series.color}">${series.values.at(-1)}</text>
+              `).join("")}
+            </svg>
+          `;
+
+          legend.innerHTML = trendSeries.map((series) => `
+            <div class="trend-legend-item">
+              <i class="trend-swatch" style="background:${series.color}"></i>
+              <strong>${series.name}</strong>
+              <span>2025: ${series.values.at(-1)} 篇</span>
+            </div>
+          `).join("");
+        };
+
+        const escapeHtml = (text) => String(text || "").replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        })[char]);
+
+        const renderPaperSearch = () => {
+          const papers = window.ISMIR_PAPERS || [];
+          const input = document.getElementById("paperSearchInput");
+          const yearFilter = document.getElementById("paperYearFilter");
+          const categoryFilter = document.getElementById("paperCategoryFilter");
+          const count = document.getElementById("paperSearchCount");
+          const results = document.getElementById("paperSearchResults");
+
+          if (!input || !yearFilter || !categoryFilter || !count || !results) {
+            return;
+          }
+
+          const years = [...new Set(papers.map((paper) => paper.year))].sort((a, b) => a - b);
+          const categories = [...new Map(papers.map((paper) => [paper.category, {
+            id: paper.category,
+            short: paper.categoryShort,
+            color: paper.categoryColor
+          }])).values()];
+
+          yearFilter.innerHTML = `<option value="all">全部年份</option>${years.map((year) => `<option value="${year}">${year}</option>`).join("")}`;
+          categoryFilter.innerHTML = `<option value="all">全部方向</option>${categories.map((category) => `<option value="${category.id}">${escapeHtml(category.short)}</option>`).join("")}`;
+
+          const render = () => {
+            const query = input.value.trim().toLowerCase();
+            const selectedYear = yearFilter.value;
+            const selectedCategory = categoryFilter.value;
+            const terms = query.split(/\s+/).filter(Boolean);
+            const filtered = papers.filter((paper) => {
+              const yearOk = selectedYear === "all" || String(paper.year) === selectedYear;
+              const categoryOk = selectedCategory === "all" || paper.category === selectedCategory;
+              const queryOk = terms.every((term) => paper.searchText.includes(term));
+              return yearOk && categoryOk && queryOk;
+            });
+
+            count.textContent = filtered.length;
+            if (!filtered.length) {
+              results.innerHTML = `<p class="paper-empty">没有匹配的论文</p>`;
+              return;
+            }
+
+            results.innerHTML = filtered.map((paper) => {
+              const keywordTags = (paper.keywords || []).slice(0, 3).map((keyword) => `<span class="paper-tag">${escapeHtml(keyword)}</span>`).join("");
+              const pdfLink = paper.pdf ? `<a href="${escapeHtml(paper.pdf)}" target="_blank" rel="noreferrer">PDF</a>` : "";
+              const webLink = paper.web ? `<a href="${escapeHtml(paper.web)}" target="_blank" rel="noreferrer">网页</a>` : "";
+              return `
+                <article class="paper-result">
+                  <div>
+                    <h3>${escapeHtml(paper.title)}</h3>
+                    <p class="paper-authors">${escapeHtml(paper.authors)}</p>
+                    <div class="paper-tags">
+                      <span class="paper-tag">${paper.year}</span>
+                      <span class="paper-tag paper-category-tag" style="background:${paper.categoryColor}">${escapeHtml(paper.categoryShort)}</span>
+                      ${keywordTags}
+                    </div>
+                  </div>
+                  <div class="paper-actions">
+                    ${webLink}
+                    ${pdfLink}
+                  </div>
+                </article>
+              `;
+            }).join("");
+          };
+
+          input.addEventListener("input", render);
+          yearFilter.addEventListener("change", render);
+          categoryFilter.addEventListener("change", render);
+          render();
+        };
+
+        const initFloatingBubbles = () => {
+          const map = document.querySelector(".element-map");
+          const bubbles = [...document.querySelectorAll(".element-map .bubble")];
+
+          if (!map || !bubbles.length || prefersReducedMotion.matches) {
+            return;
+          }
+
+          const motions = bubbles.map((bubble, index) => {
+            const direction = index % 2 === 0 ? 1 : -1;
+            return {
+              bubble,
+              x: direction * (8 + (index % 3) * 4),
+              y: 18 + (index % 4) * 7,
+              phase: index * 0.65
+            };
+          });
+          let ticking = false;
+
+          const update = () => {
+            ticking = false;
+            const rect = map.getBoundingClientRect();
+            const viewport = window.innerHeight || document.documentElement.clientHeight;
+            const progress = Math.min(1, Math.max(-1, (viewport * 0.5 - rect.top) / (viewport + rect.height)));
+
+            motions.forEach(({ bubble, x, y, phase }) => {
+              const wave = Math.sin(progress * Math.PI * 1.4 + phase);
+              bubble.style.setProperty("--float-x", `${(wave * x).toFixed(2)}px`);
+              bubble.style.setProperty("--float-y", `${(progress * y).toFixed(2)}px`);
+            });
+          };
+
+          const requestUpdate = () => {
+            if (!ticking) {
+              ticking = true;
+              window.requestAnimationFrame(update);
+            }
+          };
+
+          update();
+          window.addEventListener("scroll", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate);
+        };
+
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const duration = 360;
+        const easing = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+        renderResearchTrends();
+        renderPaperSearch();
+        initFloatingBubbles();
+
+        document.querySelectorAll(".metric-group").forEach((group) => {
+          const summary = group.querySelector(".metric-group-summary");
+          const content = group.querySelector(".metric-group-content");
+          let animation = null;
+
+          const setClosedStyles = () => {
+            content.style.height = "0px";
+            content.style.opacity = "0";
+            content.style.transform = "translateY(-8px)";
+            content.style.overflow = "hidden";
+          };
+
+          const clearInlineStyles = () => {
+            content.style.height = "";
+            content.style.opacity = "";
+            content.style.transform = "";
+            content.style.overflow = "";
+          };
+
+          if (!group.open) {
+            setClosedStyles();
+          }
+
+          summary.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            if (animation) {
+              animation.cancel();
+            }
+
+            if (prefersReducedMotion.matches) {
+              group.open = !group.open;
+              if (group.open) {
+                clearInlineStyles();
+              } else {
+                setClosedStyles();
+              }
+              return;
+            }
+
+            const isOpening = !group.open;
+            group.classList.add("is-animating");
+
+            if (isOpening) {
+              group.open = true;
+              content.style.overflow = "hidden";
+              const targetHeight = `${content.scrollHeight}px`;
+              animation = content.animate(
+                [
+                  { height: "0px", opacity: 0, transform: "translateY(-8px)" },
+                  { height: targetHeight, opacity: 1, transform: "translateY(0)" }
+                ],
+                { duration, easing }
+              );
+              content.style.height = targetHeight;
+              content.style.opacity = "1";
+              content.style.transform = "translateY(0)";
+            } else {
+              const startHeight = `${content.offsetHeight}px`;
+              animation = content.animate(
+                [
+                  { height: startHeight, opacity: 1, transform: "translateY(0)" },
+                  { height: "0px", opacity: 0, transform: "translateY(-8px)" }
+                ],
+                { duration: 300, easing }
+              );
+              setClosedStyles();
+            }
+
+            animation.onfinish = () => {
+              animation = null;
+              group.classList.remove("is-animating");
+              if (isOpening) {
+                clearInlineStyles();
+              } else {
+                group.open = false;
+              }
+            };
+
+            animation.oncancel = () => {
+              group.classList.remove("is-animating");
+            };
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
