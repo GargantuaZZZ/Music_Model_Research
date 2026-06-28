@@ -168,14 +168,15 @@ h2 {
 }
 
 .trend-line-chart {
-  min-height: 430px;
-  overflow-x: auto;
+  min-height: 0;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .trend-line-chart svg {
   display: block;
   width: 100%;
-  min-width: 760px;
+  max-width: 100%;
   height: auto;
 }
 
@@ -201,6 +202,13 @@ h2 {
   font-weight: 780;
 }
 
+.trend-grid-line,
+.trend-axis,
+.trend-axis-label,
+.trend-year-label {
+  pointer-events: none;
+}
+
 .trend-series {
   fill: none;
   stroke-width: 3.4;
@@ -218,6 +226,13 @@ h2 {
   fill: var(--ink);
   font-size: 12px;
   font-weight: 820;
+}
+
+.trend-label-guide {
+  fill: none;
+  stroke: #c9d5e2;
+  stroke-width: 1.2;
+  stroke-dasharray: 3 4;
 }
 
 .trend-side {
@@ -1354,10 +1369,6 @@ h2 {
     margin-top: 12px;
   }
 
-  .trend-line-chart {
-    min-height: 360px;
-  }
-
   .metric-group-summary {
     align-items: flex-start;
     padding: 16px 18px;
@@ -1424,10 +1435,6 @@ h2 {
 
   .trend-chart-head h3 {
     font-size: 21px;
-  }
-
-  .trend-line-chart svg {
-    min-width: 680px;
   }
 
   .challenge-card {

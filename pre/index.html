@@ -84,7 +84,7 @@
           <p class="index">03</p>
           <div>
             <p class="eyebrow">Functions</p>
-            <h2 id="functions-title">功能</h2>
+            <h2 id="functions-title">功能 / Baseline</h2>
           </div>
         </div>
         <div class="feature-card">
@@ -1157,8 +1157,8 @@
           }
 
           const width = 860;
-          const height = 430;
-          const padding = { top: 28, right: 96, bottom: 54, left: 54 };
+          const height = 380;
+          const padding = { top: 28, right: 122, bottom: 42, left: 54 };
           const plotWidth = width - padding.left - padding.right;
           const plotHeight = height - padding.top - padding.bottom;
           const maxValue = 75;
@@ -1166,11 +1166,31 @@
           const x = (index) => padding.left + (plotWidth / (trendYears.length - 1)) * index;
           const y = (value) => padding.top + plotHeight - (value / maxValue) * plotHeight;
           const pathFor = (values) => values.map((value, index) => `${index === 0 ? "M" : "L"} ${x(index).toFixed(1)} ${y(value).toFixed(1)}`).join(" ");
+          const labelRows = trendSeries
+            .map((series) => ({
+              name: series.name,
+              rawY: y(series.values.at(-1))
+            }))
+            .sort((a, b) => a.rawY - b.rawY);
+          const minLabelGap = 22;
+          const labelTop = padding.top + 10;
+          const labelBottom = height - padding.bottom - 10;
+
+          labelRows.forEach((row, index) => {
+            row.labelY = index === 0 ? Math.max(row.rawY, labelTop) : Math.max(row.rawY, labelRows[index - 1].labelY + minLabelGap);
+          });
+
+          const overflow = labelRows.at(-1).labelY - labelBottom;
+          if (overflow > 0) {
+            labelRows.forEach((row) => {
+              row.labelY -= overflow;
+            });
+          }
+
+          const labelYByName = new Map(labelRows.map((row) => [row.name, row.labelY]));
 
           chart.innerHTML = `
-            <svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="trendChartTitle trendChartDesc">
-              <title id="trendChartTitle">ISMIR 主要研究方向论文数随年份变化</title>
-              <desc id="trendChartDesc">六个研究方向从 2021 到 2025 的论文数量折线图。</desc>
+            <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="ISMIR 主要研究方向论文数随年份变化折线图">
               ${yTicks.map((tick) => `
                 <line class="trend-grid-line" x1="${padding.left}" y1="${y(tick).toFixed(1)}" x2="${width - padding.right}" y2="${y(tick).toFixed(1)}"></line>
                 <text class="trend-axis-label" x="${padding.left - 12}" y="${y(tick).toFixed(1)}" text-anchor="end" dominant-baseline="middle">${tick}</text>
@@ -1178,14 +1198,15 @@
               <line class="trend-axis" x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${height - padding.bottom}"></line>
               <line class="trend-axis" x1="${padding.left}" y1="${height - padding.bottom}" x2="${width - padding.right}" y2="${height - padding.bottom}"></line>
               ${trendYears.map((year, index) => `
-                <text class="trend-year-label" x="${x(index).toFixed(1)}" y="${height - 22}" text-anchor="middle">${year}</text>
+                <text class="trend-year-label" x="${x(index).toFixed(1)}" y="${height - 16}" text-anchor="middle">${year}</text>
               `).join("")}
               ${trendSeries.map((series) => `
                 <path class="trend-series" d="${pathFor(series.values)}" stroke="${series.color}"></path>
                 ${series.values.map((value, index) => `
                   <circle class="trend-dot" cx="${x(index).toFixed(1)}" cy="${y(value).toFixed(1)}" r="5" fill="${series.color}"></circle>
                 `).join("")}
-                <text class="trend-value-label" x="${(width - padding.right + 14).toFixed(1)}" y="${y(series.values.at(-1)).toFixed(1)}" dominant-baseline="middle" fill="${series.color}">${series.values.at(-1)}</text>
+                <path class="trend-label-guide" d="M ${(width - padding.right).toFixed(1)} ${y(series.values.at(-1)).toFixed(1)} L ${(width - padding.right + 12).toFixed(1)} ${labelYByName.get(series.name).toFixed(1)}"></path>
+                <text class="trend-value-label" x="${(width - padding.right + 18).toFixed(1)}" y="${labelYByName.get(series.name).toFixed(1)}" dominant-baseline="middle" fill="${series.color}">${series.values.at(-1)}</text>
               `).join("")}
             </svg>
           `;
