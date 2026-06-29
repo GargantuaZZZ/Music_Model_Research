@@ -87,16 +87,19 @@
             <h2 id="functions-title">功能 / Baseline</h2>
           </div>
         </div>
-        <div class="feature-card">
+        <div class="feature-card feature-card-with-side-image">
           <h3>MIDI-VALLE</h3>
-          <div class="flow-diagram" aria-label="MIDI 加音频生成音频">
-            <span class="mini-bubble mini-midi">MIDI</span>
-            <span class="operator">+</span>
-            <span class="mini-bubble mini-audio">音频</span>
-            <span class="arrow">→</span>
-            <span class="mini-bubble mini-audio">音频</span>
+          <div class="feature-left-column">
+            <div class="flow-diagram" aria-label="MIDI 加音频生成音频">
+              <span class="mini-bubble mini-midi">MIDI</span>
+              <span class="operator">+</span>
+              <span class="mini-bubble mini-audio">音频</span>
+              <span class="arrow">→</span>
+              <span class="mini-bubble mini-audio">音频</span>
+            </div>
+            <img class="feature-side-image" src="../resources/MIDI-VALLE2.png" alt="MIDI-VALLE 结果示意图">
           </div>
-          <img src="../resources/MIDI-VALLE1.png" alt="MIDI-VALLE 模型示意图">
+          <img class="feature-primary-image" src="../resources/MIDI-VALLE1.png" alt="MIDI-VALLE 模型示意图">
         </div>
         <div class="feature-card">
           <h3>BART-fusion</h3>
@@ -120,14 +123,17 @@
           </div>
           <img src="../resources/MusicGen-fusion1.png" alt="MusicGen-fusion 模型示意图">
         </div>
-        <div class="feature-card">
+        <div class="feature-card feature-card-with-side-image">
           <h3>MST-Text/Tags</h3>
-          <div class="flow-diagram" aria-label="理解生成 MIDI">
-            <span class="mini-bubble mini-understanding">理解</span>
-            <span class="arrow">→</span>
-            <span class="mini-bubble mini-midi">MIDI</span>
+          <div class="feature-left-column">
+            <div class="flow-diagram" aria-label="理解生成 MIDI">
+              <span class="mini-bubble mini-understanding">理解</span>
+              <span class="arrow">→</span>
+              <span class="mini-bubble mini-midi">MIDI</span>
+            </div>
+            <img class="feature-side-image" src="../resources/MST2.png" alt="MST-Text/Tags 结果示意图">
           </div>
-          <img src="../resources/MST1.png" alt="MST-Text/Tags 模型示意图">
+          <img class="feature-primary-image" src="../resources/MST1.png" alt="MST-Text/Tags 模型示意图">
         </div>
         <div class="feature-card">
           <h3>See2Hear</h3>
@@ -271,7 +277,7 @@
         <details class="metric-group">
           <summary class="metric-group-summary">
             <span class="metric-group-title">音频生成质量</span>
-            <span class="metric-group-count">3 项</span>
+            <span class="metric-group-count">4 项</span>
           </summary>
           <div class="metric-group-content">
           <article class="metric-card">
@@ -295,6 +301,35 @@
                 <li>噪声、失真、伪影是否多</li>
                 <li>整体声学分布是否像真实录音</li>
               </ul>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>KL <span>(Kullback-Leibler Divergence)</span></h3>
+              <p>音频生成质量</p>
+            </div>
+            <div class="metric-block">
+              <div class="formula-card formula-wide">
+                <div class="formula-equation formula-large">
+                  <span>D<sub>KL</sub>(P ∥ Q)</span>
+                  <span>=</span>
+                  <span>∑<sub>x</sub> P(x) log</span>
+                  <span class="formula-fraction">
+                    <span>P(x)</span>
+                    <span>Q(x)</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="metric-block">
+              <h4>其中</h4>
+              <ul class="metric-list">
+                <li><strong>P</strong>：真实分布 / 目标分布</li>
+                <li><strong>Q</strong>：模型分布 / 近似分布</li>
+              </ul>
+            </div>
+            <div class="metric-block">
+              <p class="metric-statement">KL 可以比较 genre、mood、instrument、audio event、embedding / feature statistics 的分布。如果 KL 小，说明生成音乐在这些语义或声学类别上的分布更接近真实数据。</p>
             </div>
           </article>
           <article class="metric-card">
@@ -1046,7 +1081,28 @@
         </article>
         <article class="challenge-card">
           <div class="challenge-title">
-            <h3>多模态（视频）</h3>
+            <h3>MIDI -> 音频</h3>
+          </div>
+          <div class="challenge-list">
+            <div class="challenge-item">
+              <span>1</span>
+              <div>
+                <h4>对不同声学环境和音色的泛化能力</h4>
+                <p>数据集种类有限，模型架构设计限制，都会影响模型在不同乐器音色、录音条件、混响环境和演奏风格下的泛化表现。</p>
+              </div>
+            </div>
+            <div class="challenge-item">
+              <span>2</span>
+              <div>
+                <h4>EPR 和 EPS 模型差异导致的损失</h4>
+                <p>EPR (expressive performance rendering) 将乐谱转换为 MIDI，EPS (expressive performance synthesis) 将 MIDI 转换为音频。二者处理和表示 MIDI 信号的方式不同，可能影响最终合成质量。</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="challenge-card">
+          <div class="challenge-title">
+            <h3>视频 -> 音频</h3>
           </div>
           <div class="challenge-list">
             <div class="challenge-item">
@@ -1369,6 +1425,18 @@
             content.style.overflow = "";
           };
 
+          const scrollBackToMetricsSection = () => {
+            const metricsSection = document.getElementById("metrics-title")?.closest(".section");
+            const target = metricsSection || group;
+            const targetY = Math.max(0, window.scrollY + target.getBoundingClientRect().top - 12);
+            requestAnimationFrame(() => {
+              window.scrollTo({
+                top: targetY,
+                behavior: prefersReducedMotion.matches ? "auto" : "smooth"
+              });
+            });
+          };
+
           if (!group.open) {
             setClosedStyles();
           }
@@ -1386,6 +1454,7 @@
                 clearInlineStyles();
               } else {
                 setClosedStyles();
+                scrollBackToMetricsSection();
               }
               return;
             }
@@ -1426,6 +1495,7 @@
                 clearInlineStyles();
               } else {
                 group.open = false;
+                scrollBackToMetricsSection();
               }
             };
 
