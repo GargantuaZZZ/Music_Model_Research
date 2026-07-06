@@ -1123,9 +1123,123 @@
         </article>
       </section>
 
-      <section class="section section-paper-search" aria-labelledby="paper-search-title">
+      <section class="section section-applications" aria-labelledby="applications-title">
         <div class="section-heading">
           <p class="index">07</p>
+          <div>
+            <p class="eyebrow">Applications</p>
+            <h2 id="applications-title">可能的应用</h2>
+          </div>
+        </div>
+
+        <article class="application-card">
+          <div class="application-kicker">7.1</div>
+          <div>
+            <h3>MIDI + 音频 -> 音频：参考音频驱动的快速音色尝试</h3>
+            <p>传统软音源通常需要用户手动选择音色库，并调整大量参数，例如乐器类型、力度响应、包络、混响、空间感、音色明暗、演奏法等。对于非专业制作人来说，这个过程门槛较高，而且试错成本很大。</p>
+            <p>MIDI + 音频 -> 音频的模型可以提供一种更直观的工作方式：用户输入 MIDI 作为旋律、节奏和音高结构，再输入一段参考音频作为音色、演奏风格或声音质感参考，模型直接生成接近该参考风格的音频。这样用户不需要理解复杂的合成器参数，只需要通过“给一段参考声音”来快速尝试不同音色。</p>
+            <h4>应用场景</h4>
+            <ul class="application-list">
+              <li>编曲时快速试听同一段 MIDI 在不同音色下的效果。</li>
+              <li>用参考钢琴、人声、弦乐或合成器音色生成更接近目标风格的音频。</li>
+              <li>给不会调软音源参数的创作者提供低门槛音色设计工具。</li>
+              <li>在游戏、短视频、广告配乐中快速生成多版音色 demo。</li>
+              <li>把 MIDI 草稿快速渲染成更真实、更有表现力的音频，用于创作预览。</li>
+            </ul>
+            <p>它相比传统软音源的优势不是完全替代专业音源，而是降低早期创作阶段的试错成本：从“调参数”变成“找参考”。</p>
+          </div>
+        </article>
+
+        <article class="application-card">
+          <div class="application-kicker">7.2</div>
+          <div>
+            <h3>理解 -> MIDI：文本控制的可编辑音乐草稿</h3>
+            <p>理解 -> MIDI 可以把自然语言描述、标签或情绪设定转成可编辑 MIDI。相比直接生成音频，MIDI 更容易修改旋律、和弦、节奏、速度和结构，因此适合作为创作中间层。</p>
+            <h4>应用场景</h4>
+            <ul class="application-list">
+              <li>输入“轻快、适合 vlog、带一点 funk 的钢琴伴奏”，生成 MIDI 草稿。</li>
+              <li>根据情绪标签生成旋律或和弦进行。</li>
+              <li>为不会乐理的用户生成可编辑音乐片段。</li>
+              <li>给专业制作人提供可修改的灵感素材。</li>
+              <li>先生成 MIDI，再接 MIDI -> 音频模型生成真实音色。</li>
+            </ul>
+            <p>它的优势是可控和可编辑，适合作为音乐创作软件里的“草稿生成器”。</p>
+          </div>
+        </article>
+
+        <article class="application-card">
+          <div class="application-kicker">7.3</div>
+          <div>
+            <h3>音频 -> 理解 -> 视频 / 文本：音乐内容解释与 MV 自动生成</h3>
+            <p>音频 -> 理解模型不仅可以把音乐转成标签，还可以进一步分析音乐的情绪、风格、主题、歌词含义、段落结构、高潮位置、乐器使用、节奏变化和整体氛围。这类结构化理解结果可以继续接到下游生成模型，也可以直接作为面向听众的解释内容。</p>
+
+            <div class="application-subblock">
+              <h4>7.3.1 音乐 MV 自动生成</h4>
+              <p>相比直接把整首歌丢给视频生成模型，先做音乐理解有两个好处：可以让视频内容更贴合音乐结构，例如主歌画面更克制，副歌画面更强烈，bridge 部分可以加入转场或情绪变化；也可以让视频风格更贴合音乐语义，例如模型先判断歌曲是“忧郁、低唤醒、怀旧感”，再生成慢镜头、低饱和度、空旷场景。如果是“兴奋、高唤醒、电子舞曲”，则生成高运动量、强光效、快切镜头。</p>
+              <ul class="application-list">
+                <li>给独立音乐人生成 MV 初稿。</li>
+                <li>给短视频平台生成音乐可视化内容。</li>
+                <li>给音乐播放器生成动态封面、歌词视频或循环背景。</li>
+                <li>给影视配乐生成概念视觉预览。</li>
+                <li>根据歌曲段落自动剪辑不同视觉片段。</li>
+              </ul>
+              <p>这里的核心价值是：音乐理解模型把“声音”变成可控的视觉生成条件，让视频生成不只是随机配画面，而是更有依据地跟随音乐。</p>
+            </div>
+
+            <div class="application-subblock">
+              <h4>7.3.2 听众听歌的背景参考</h4>
+              <p>音乐理解还可以作为听众理解音乐的辅助信息。很多时候，听众听到一首歌，只能模糊感受到“好听”“悲伤”“很燃”，但不一定知道它为什么会产生这种感觉。音频 -> 理解模型可以把音乐中的结构、情绪和风格线索解释出来，作为听歌时的背景参考。</p>
+              <ul class="application-list">
+                <li>音乐播放器中的“歌曲解读”功能。</li>
+                <li>给听众解释一首歌的情绪、结构、风格和听感来源。</li>
+                <li>帮助用户发现相似音乐，而不是只依赖协同过滤推荐。</li>
+                <li>给音乐学习者提供听歌分析，例如和声、节奏、编曲特点。</li>
+                <li>为歌单生成更有内容的信息，例如“为什么这些歌适合深夜听”。</li>
+                <li>给短视频创作者解释某首歌适合什么画面和情绪场景。</li>
+              </ul>
+              <p>这类应用不一定直接生成新内容，但能提升听众对音乐的理解和参与感。它更像是“音乐导览”或“AI 乐评助手”：把模型听到的音乐信息，转化成普通听众能理解的语言。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="application-card">
+          <div class="application-kicker">7.4</div>
+          <div>
+            <h3>视频 -> 音频 / MIDI：自动配乐与音画同步</h3>
+            <p>视频到音乐可以根据画面内容、情绪、节奏和场景生成配乐。相比普通 text-to-music，它多了视觉条件，因此更适合短视频、广告、游戏 cutscene、影视片段等场景。</p>
+            <h4>应用场景</h4>
+            <ul class="application-list">
+              <li>给短视频自动生成背景音乐。</li>
+              <li>根据镜头节奏生成匹配的音乐节拍。</li>
+              <li>为电影片段生成情绪一致的 soundtrack。</li>
+              <li>为游戏场景生成动态配乐。</li>
+              <li>生成 MIDI 草稿后再由音频模型渲染成真实音乐。</li>
+            </ul>
+            <p>难点在于视频和音乐没有唯一对应关系，所以更现实的产品形态可能不是“一键生成最终配乐”，而是生成多版候选，让用户选择和微调。</p>
+          </div>
+        </article>
+
+        <article class="application-card">
+          <div class="application-kicker">7.5</div>
+          <div>
+            <h3>音频 + 参考音频 / 参考视频 -> 分离：智能扒带与二创</h3>
+            <p>分离模型可以根据参考音频或参考视频，从混合音乐中提取目标声源。相比传统固定类别分离，比如只分人声、鼓、贝斯、其他，这类方法更灵活，可以指定“我想要这个声音”。</p>
+            <h4>应用场景</h4>
+            <ul class="application-list">
+              <li>从歌曲中分离特定乐器，辅助扒带和练习。</li>
+              <li>提取人声、钢琴、吉他等声部，用于 remix 或二创。</li>
+              <li>根据演奏视频中的乐器画面，分离对应音轨。</li>
+              <li>音乐教学中单独放大某个乐器声部。</li>
+              <li>老录音修复中提取目标声源，减少背景干扰。</li>
+            </ul>
+            <p>这类应用的产品价值很强，因为它直接对应真实音乐制作和学习需求。</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section section-paper-search" aria-labelledby="paper-search-title">
+        <div class="section-heading">
+          <p class="index">08</p>
           <div>
             <p class="eyebrow">Paper Search</p>
             <h2 id="paper-search-title">论文检索</h2>
